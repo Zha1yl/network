@@ -1,4 +1,18 @@
+<<<<<<< HEAD
+{
+  "posts": [
+    {
+      "id": "910d",
+      "title": "asdasd",
+      "description": "asdasd",
+      "image": "asd",
+      "video": ""
+    }
+  ],
+  "products": [
+=======
 "products": [
+>>>>>>> 158b3ff0a9a05cd77c6455f5c42a8c3180c43070
     {
       "title": "Обувь",
       "description": "Asics Gel 1090",
