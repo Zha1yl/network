@@ -7,6 +7,7 @@ import AuthPage from "../pages/AuthPage";
 import EditPage from "../pages/EditPage";
 import AdminPage from "../pages/AdminPage";
 import { Route, Routes } from "react-router-dom";
+import PostPage from "../pages/PostPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -17,6 +18,7 @@ const MainRoutes = () => {
     { id: 5, link: "/auth", element: <AuthPage /> },
     { id: 6, link: "/edit/:id", element: <EditPage /> },
     { id: 7, link: "/admin", element: <AdminPage /> },
+    { id: 8, link: "/posts", element: <PostPage /> },
   ];
   return (
     <div>
