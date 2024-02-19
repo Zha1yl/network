@@ -6,15 +6,18 @@ import { BrowserRouter } from "react-router-dom";
 import AuthContextProvider from "./components/context/AuthContextProvider";
 import ProductContextProvider from "./components/context/ProductContextProvider";
 import CartContextProvider from "./components/context/CartContextProvider";
+import PostContextProvider from "./components/context/PostContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <AuthContextProvider>
       <ProductContextProvider>
-        <CartContextProvider>
-          <App />
-        </CartContextProvider>
+        <PostContextProvider>
+          <CartContextProvider>
+            <App />
+          </CartContextProvider>
+        </PostContextProvider>
       </ProductContextProvider>
     </AuthContextProvider>
   </BrowserRouter>
