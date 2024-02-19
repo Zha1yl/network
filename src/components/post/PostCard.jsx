@@ -3,12 +3,14 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  IconButton,
   Typography,
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { usePost } from "../context/PostContextProvider";
 import { Button } from "antd";
+import { AddShoppingCart } from "@mui/icons-material";
 
 const PostCard = ({ elem }) => {
   const navigate = useNavigate();
@@ -52,6 +54,9 @@ const PostCard = ({ elem }) => {
         >
           Удалить
         </Button>
+        <IconButton>
+          <AddShoppingCart />
+        </IconButton>
       </CardContent>
     </Card>
   );

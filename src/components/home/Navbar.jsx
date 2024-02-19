@@ -1,6 +1,8 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton, Badge } from "@mui/material";
 import { Menu as MenuIcon, Search as SearchIcon } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Navbar = () => {
   return (
@@ -20,6 +22,11 @@ const Navbar = () => {
         <IconButton color="inherit" aria-label="search">
           <SearchIcon />
         </IconButton>
+        <Link to={"/cart"}>
+          <Badge>
+            <ShoppingCartIcon sx={{ color: "white" }} />
+          </Badge>
+        </Link>
       </Toolbar>
     </AppBar>
   );

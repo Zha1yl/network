@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
-import { ACTIONS, API } from "../../helpers/const";
+import { ACTIONS, API, API_POSTS } from "../../helpers/const";
 
 const postContext = createContext();
 export const usePost = () => useContext(postContext);
@@ -22,12 +22,12 @@ const PostContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   // Create
   const addPost = async (newPost) => {
-    await axios.post(API, newPost);
+    await axios.post(API_POSTS, newPost);
     navigate("/posts");
   };
   // Get
   const getPosts = async () => {
-    const { data } = await axios(`${API}${window.location.search}`);
+    const { data } = await axios(`${API_POSTS}${window.location.search}`);
     dispatch({
       type: ACTIONS.GET_POSTS,
       payload: data,
@@ -35,12 +35,12 @@ const PostContextProvider = ({ children }) => {
   };
   //Delete
   const deletePost = async (id) => {
-    await axios.delete(`${API}/${id}`);
+    await axios.delete(`${API_POSTS}/${id}`);
     getPosts();
   };
   // GET_ONE_MOVIE
   const getOnePost = async (id) => {
-    const { data } = await axios(`${API}/${id}`);
+    const { data } = await axios(`${API_POSTS}/${id}`);
     dispatch({
       type: ACTIONS.GET_ONE_POST,
       payload: data,
@@ -48,7 +48,7 @@ const PostContextProvider = ({ children }) => {
   };
   // Edit
   const editPost = async (id, editedPost) => {
-    await axios.patch(`${API}/${id}`, editedPost);
+    await axios.patch(`${API_POSTS}/${id}`, editedPost);
     navigate("/posts");
   };
   const values = {
