@@ -1,0 +1,8 @@
+.profile {
+  display: flex;
+  position: relative;
+}
+
+.profileRightBottom {
+  display: flex;
+}
