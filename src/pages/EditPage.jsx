@@ -7,6 +7,7 @@ const EditPage = () => {
       <EditProduct />
     </div>
   );
+
 };
 
 export default EditPage;
