@@ -1,12 +1,10 @@
 import React from "react";
-import MainRoutes from "./routes/MainRoutes";
-import Navbar from "./components/home/Navbar";
+import HomePage from "./pages/home/HomePage";
 
 const App = () => {
   return (
     <div>
-      <Navbar />
-      <MainRoutes />
+      <HomePage />
     </div>
   );
 };
