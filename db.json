@@ -1,5 +1,20 @@
 {
-  "products": [],
+  "products": [
+    {
+      "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
+      "price": 100,
+      "category": "обувь",
+      "description": "Asics Gel 1090",
+      "id": 1
+    },
+    {
+      "image": "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_500,c_limit/g1ljiszo4qhthfpluzbt/nike-joyride.jpg",
+      "price": 105,
+      "category": "обувь",
+      "description": "Nike Air",
+      "id": 2
+    }
+  ],
   "posts": [
     {
       "id": "910d",
@@ -11,4 +26,3 @@
   ],
   "categories": []
 }
-
