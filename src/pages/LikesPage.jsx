@@ -1,6 +1,6 @@
 import React from "react";
 import { usePost } from "../components/context/PostContextProvider";
-import PostCard from "../components/post/PostCard";
+import Post from "../components/post/posts/Post";
 
 const LikesPage = () => {
   const { likedPosts } = usePost();
@@ -12,7 +12,7 @@ const LikesPage = () => {
   return (
     <div>
       {likedPostsData.map((elem) => (
-        <PostCard key={elem.id} elem={elem} />
+        <Post key={elem.id} elem={elem} />
       ))}
     </div>
   );
