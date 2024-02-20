@@ -15,6 +15,7 @@
       "id": 2
     }
   ],
+  "categories": [],
   "posts": [
     {
       "id": "a80d",
@@ -22,8 +23,16 @@
       "description": "sadsad",
       "image": "asdsad",
       "video": ""
+    },
+    {
+      "id": "b4b8",
+      "title": "asd",
+      "description": "sadasd",
+      "image": "",
+      "video": ""
     }
   ],
-  "categories": []
 }
+
+
 
