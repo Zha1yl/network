@@ -28,6 +28,7 @@ const PostContextProvider = ({ children }) => {
   // Get
   const getPosts = async () => {
     const { data } = await axios(`${API_POSTS}${window.location.search}`);
+    console.log(data);
     dispatch({
       type: ACTIONS.GET_POSTS,
       payload: data,
