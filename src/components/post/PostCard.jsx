@@ -6,15 +6,22 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePost } from "../context/PostContextProvider";
 import { Button } from "antd";
 import { AddShoppingCart } from "@mui/icons-material";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 
 const PostCard = ({ elem }) => {
   const navigate = useNavigate();
   const { deletePost } = usePost();
+  const [like, setLike] = useState(elem.like);
+  const [isLiked, setIsLiked] = useState(false);
+  const handleLikeClick = () => {
+    setLike((prevLike) => prevLike + (isLiked ? -1 : 1));
+    setIsLiked(!isLiked);
+  };
   return (
     <Card
       sx={{
@@ -56,6 +63,13 @@ const PostCard = ({ elem }) => {
         </Button>
         <IconButton>
           <AddShoppingCart />
+        </IconButton>
+        <IconButton onClick={handleLikeClick}>
+          {isLiked ? (
+            <HeartFilled style={{ color: "red" }} />
+          ) : (
+            <HeartOutlined />
+          )}
         </IconButton>
       </CardContent>
     </Card>

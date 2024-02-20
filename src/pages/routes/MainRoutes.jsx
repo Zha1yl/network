@@ -8,6 +8,7 @@ import EditPage from "../EditPage";
 import AdminPage from "../AdminPage";
 import PostPage from "../PostPage";
 import NotFoundPage from "../NotFoundPage";
+import LikesPage from "../LikesPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -19,6 +20,7 @@ const MainRoutes = () => {
     { id: 6, link: "/edit/:id", element: <EditPage /> },
     { id: 7, link: "/admin", element: <AdminPage /> },
     { id: 8, link: "/posts", element: <PostPage /> },
+    { id: 11, link: "/likes", element: <LikesPage /> },
   ];
   return (
     <div>
