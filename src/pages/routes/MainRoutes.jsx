@@ -1,13 +1,13 @@
 import React from "react";
-import HomePage from "../pages/HomePage";
-import NotFoundPage from "../pages/NotFoundPage";
-import ProductPage from "../pages/ProductPage";
-import CartPage from "../pages/CartPage";
-import AuthPage from "../pages/AuthPage";
-import EditPage from "../pages/EditPage";
-import AdminPage from "../pages/AdminPage";
 import { Route, Routes } from "react-router-dom";
-import PostPage from "../pages/PostPage";
+import HomePage from "../HomePage";
+import ProductPage from "../ProductPage";
+import CartPage from "../CartPage";
+import AuthPage from "../AuthPage";
+import EditPage from "../EditPage";
+import AdminPage from "../AdminPage";
+import PostPage from "../PostPage";
+import NotFoundPage from "../NotFoundPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [

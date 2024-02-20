@@ -6,4 +6,4 @@ export const ACTIONS = {
   GET_ONE_POST: "GET_ONE_POST",
   GET_CART: "GET_CART",
   GET_CATEGORIES: "GET_CATEGORIES",
-}
+};

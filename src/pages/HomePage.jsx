@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/home/Navbar";
 import PostPage from "./PostPage";
 
 const HomePage = () => {
