@@ -1,0 +1,27 @@
+.product {
+  border: 1px solid #e7e7e7;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  width: fit-content;
+
+}
+
+.product img {
+  max-width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.product h3 {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.product .price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #007bff;
+}
