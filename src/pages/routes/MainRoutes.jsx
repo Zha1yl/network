@@ -1,12 +1,13 @@
 import React from "react";
-import HomePage from "../pages/HomePage";
-import NotFoundPage from "../pages/NotFoundPage";
+import HomePage from "../AdminPage";
+import HomePage from "../HomePage";
+import NotFoundPage from "../NotFoundPage";
 import ProductPage from "../pages/ProductPage";
 import CartPage from "../pages/CartPage";
 import AuthPage from "../pages/AuthPage";
 import EditPage from "../pages/EditPage";
 import AdminPage from "../pages/AdminPage";
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
