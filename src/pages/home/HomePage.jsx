@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../../components/home/navbar/Navbar";
 import SideBar from "../../components/home/sidebar/SideBar";
 import PostList from "../../components/post/postlist/PostList";
-import { Input, Button } from "antd";
 import "./homePage.css";
+import { Button, Input } from "@mui/material";
 import { usePost } from "../../components/context/PostContextProvider";
 
 const HomePage = () => {
@@ -33,7 +33,6 @@ const HomePage = () => {
       video: "",
     });
   };
-
   return (
     <div>
       <Navbar />
