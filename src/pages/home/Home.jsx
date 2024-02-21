@@ -6,7 +6,7 @@ import "./homePage.css";
 import { Button, Input } from "@mui/material";
 import { usePost } from "../../components/context/PostContextProvider";
 
-const HomePage = () => {
+const Home = () => {
   const { addPost } = usePost();
   const [post, setPost] = useState({
     title: "",
@@ -35,9 +35,9 @@ const HomePage = () => {
   };
   return (
     <div>
-      <Navbar />
+      <img src="" alt="" />
+
       <div className="homeContainer">
-        <SideBar />
         <div className="homeContent">
           <div className="addPostForm">
             <Input
@@ -82,4 +82,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

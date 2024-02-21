@@ -1,10 +1,16 @@
 import React from "react";
-import HomePage from "./pages/home/HomePage";
+import Navbar from "./components/home/navbar/Navbar";
+import MainRoutes from "./pages/routes/MainRoutes";
+import SideBar from "./components/home/sidebar/SideBar";
 
 const App = () => {
   return (
     <div>
-      <HomePage />
+      <Navbar />
+      <div style={{ display: "flex" }}>
+        <SideBar />
+        <MainRoutes />
+      </div>
     </div>
   );
 };
