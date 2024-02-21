@@ -1,16 +1,15 @@
 import React from "react";
-import NotFoundPage from "../pages/NotFoundPage";
-import CartPage from "../pages/CartPage";
-import EditPage from "../pages/EditPage";
-import AdminPage from "../pages/AdminPage";
-import Login from "../components/auth/Login";
-import Registration from "../components/auth/Registration";
+import CartPage from "../CartPage";
+import EditPage from "../EditPage";
+import Registration from "../../components/auth/Registration";
 import HomePage from "../HomePage";
 import LikesPage from "../LikesPage";
 import ProductPage from "../ProductPage";
-import CartPage from "../CartPage";
-
+import MarketPage from "../MarketPage";
 import { Route, Routes } from "react-router-dom";
+import PostPage from "../PostPage";
+import NotFoundPage from "../NotFoundPage";
+import Login from "../../components/auth/Login";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -20,7 +19,7 @@ const MainRoutes = () => {
     { id: 4, link: "/cart", element: <CartPage /> },
     { id: 5, link: "/login", element: <Login /> },
     { id: 6, link: "/edit/:id", element: <EditPage /> },
-    { id: 7, link: "/admin", element: <AdminPage /> },
+    { id: 7, link: "/market", element: <MarketPage /> },
     { id: 8, link: "/posts", element: <PostPage /> },
     { id: 9, link: "/register", element: <Registration /> },
     { id: 11, link: "/likes", element: <LikesPage /> },

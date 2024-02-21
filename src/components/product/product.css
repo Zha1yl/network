@@ -5,12 +5,11 @@
   margin-bottom: 20px;
   background-color: #fff;
   width: fit-content;
-
 }
 
 .product img {
-  max-width: 100px;
-  height: auto;
+  max-width: 150px;
+  height: 150px;
   border-radius: 5px;
 }
 

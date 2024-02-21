@@ -18,26 +18,28 @@ const ProductCard = ({ elem }) => {
     deleteProduct(elem.id);
   };
   return (
-    <div class="product">
-      <img src={elem.image} alt="" />
-      <h3>{elem.description}</h3>
-      <h3>{elem.category}</h3>
-      <p class="price">{elem.price}</p>
-      <IconButton
-        sx={{
-          backgroundColor: checkProductInCart(elem.id) ? "lightBlue" : "",
-          color: checkProductInCart(elem.id) ? "white" : "",
-        }}
-        onClick={() => addProductToCart(elem)}
-      >
-        <AddShoppingCart />
-      </IconButton>
-      <IconButton onClick={() => navigate(`/edit/${elem.id}`)}>
-        <EditNoteIcon />
-      </IconButton>
-      <IconButton onClick={handleClick}>
-        <DeleteOutlineIcon />
-      </IconButton>
+    <div style={{ display: "flex", gap: "20px", ml: "191px" }}>
+      <div class="product">
+        <img src={elem.image} alt="" />
+        <h3>{elem.description}</h3>
+        <h3>{elem.category}</h3>
+        <p class="price">{elem.price}</p>
+        <IconButton
+          sx={{
+            backgroundColor: checkProductInCart(elem.id) ? "lightBlue" : "",
+            color: checkProductInCart(elem.id) ? "white" : "",
+          }}
+          onClick={() => addProductToCart(elem)}
+        >
+          <AddShoppingCart />
+        </IconButton>
+        <IconButton onClick={() => navigate(`/edit/${elem.id}`)}>
+          <EditNoteIcon />
+        </IconButton>
+        <IconButton onClick={handleClick}>
+          <DeleteOutlineIcon />
+        </IconButton>
+      </div>
     </div>
   );
 };
