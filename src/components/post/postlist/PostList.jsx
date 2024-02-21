@@ -8,7 +8,7 @@ const PostList = () => {
 
   useEffect(() => {
     getPosts();
-  }, [getPosts]);
+  }, []);
 
   return (
     <div className="postList">

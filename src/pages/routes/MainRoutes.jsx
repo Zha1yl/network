@@ -9,6 +9,7 @@ import AdminPage from "../AdminPage";
 import PostPage from "../PostPage";
 import NotFoundPage from "../NotFoundPage";
 import LikesPage from "../LikesPage";
+import MusicPage from "../../components/music/MusicPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -18,9 +19,8 @@ const MainRoutes = () => {
     { id: 4, link: "/cart", element: <CartPage /> },
     { id: 5, link: "/auth", element: <AuthPage /> },
     { id: 6, link: "/edit/:id", element: <EditPage /> },
-    { id: 7, link: "/admin", element: <AdminPage /> },
-    { id: 8, link: "/posts", element: <PostPage /> },
-    { id: 11, link: "/likes", element: <LikesPage /> },
+    { id: 7, link: "/likes", element: <LikesPage /> },
+    { id: 8, link: "/music", element: <MusicPage /> },
   ];
   return (
     <div>
