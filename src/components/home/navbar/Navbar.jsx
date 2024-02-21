@@ -1,7 +1,7 @@
 import { Chat, Notifications, Person, Search } from "@mui/icons-material";
 import React, { useEffect, useRef, useState } from "react";
 import "./navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
 
@@ -48,11 +48,6 @@ const Navbar = () => {
       </div>
       <div className="navbarCenter">
         <div className="searchBar">
-          <input
-            type="text"
-            placeholder="Найти друзей, посты или видео"
-            className="searchInput"
-          />
           <Search className="searchIcon" />
           <input
             type="text" // Правильный тип
