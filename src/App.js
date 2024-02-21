@@ -1,12 +1,17 @@
 import React from "react";
+import Navbar from "./components/home/navbar/Navbar";
+
+import SideBar from "./components/home/sidebar/SideBar";
 import MainRoutes from "./routes/MainRoutes";
-import Navbar from "./components/home/Navbar";
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <MainRoutes />
+      <div style={{ display: "flex" }}>
+        <SideBar />
+        <MainRoutes />
+      </div>
     </div>
   );
 };
