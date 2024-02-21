@@ -37,9 +37,12 @@ export const PostContextProvider = ({ children }) => {
   });
 
   // Create
-  const addPost = async (newPost) => {
-    await axios.post(API_POSTS, newPost);
-    navigate("/posts");
+  const addPost = async (newPost, token) => {
+    await axios.post(API_POSTS, newPost, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   };
 
   // Get
@@ -56,9 +59,13 @@ export const PostContextProvider = ({ children }) => {
   };
 
   // Delete
-  const deletePost = async (id) => {
+  const deletePost = async (id, token) => {
     try {
-      await axios.delete(`${API_POSTS}/${id}`);
+      await axios.delete(`${API_POSTS}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       getPosts();
     } catch (error) {
       console.error("Error deleting post:", error);

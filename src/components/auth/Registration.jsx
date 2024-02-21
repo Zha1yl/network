@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./auth.css";
 import { useAuth } from "../context/AuthContextProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Registration = () => {
   const { registerUser } = useAuth();
@@ -10,6 +10,7 @@ const Registration = () => {
   const [fullName, setFullName] = useState("");
   const [avatarUrl, setAvatarUrl] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleClick = () => {
     if (!email || !password || !fullName || !avatarUrl) {
@@ -30,6 +31,7 @@ const Registration = () => {
       avatarUrl: avatarUrl,
     };
     registerUser(obj);
+    navigate("/");
   };
 
   return (
