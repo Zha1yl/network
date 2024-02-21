@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../../components/home/navbar/Navbar";
-import SideBar from "../../components/home/sidebar/SideBar";
 import PostList from "../../components/post/postlist/PostList";
 import "./homePage.css";
 import { Button, Input } from "@mui/material";

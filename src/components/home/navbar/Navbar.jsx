@@ -1,11 +1,18 @@
 import { Chat, Notifications, Person, Search } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.css";
 import person1 from "../../assets/person/1.jpeg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
+  useEffect(() => {
+    setSearchParams({
+      q: search,
+    });
+  }, [search]);
   return (
     <div className="navbarContainer">
       <div className="navbarLeft">
@@ -16,7 +23,13 @@ const Navbar = () => {
       <div className="navbarCenter">
         <div className="searchBar">
           <Search className="searchIcon" />
-          <input type="Найти друзей, посты или видео" className="searchInput" />
+          <input
+            type="text" // Правильный тип
+            placeholder="Найти друзей, посты или видео" // Добавьте placeholder для подсказки
+            className="searchInput"
+            value={search} // Убедитесь, что значение поля связано со state
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
       </div>
       <div className="navbarRight">
