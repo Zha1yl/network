@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContextProvider";
 import "./auth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { fetchUserData } = useAuth();
+  const navigate = useNavigate();
+  const { loginUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,7 +18,8 @@ const Login = () => {
       email: email,
       password: password,
     };
-    fetchUserData(obj);
+    loginUser(obj);
+    navigate("/");
   };
   return (
     <div className="auth__page">

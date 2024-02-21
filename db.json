@@ -1,4 +1,13 @@
 {
+  "posts": [
+    {
+      "title": "gfhjkl",
+      "description": "fghjkl.",
+      "image": "vghbjkl",
+      "video": "",
+      "id": 1
+    }
+  ],
   "products": [
     {
       "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
@@ -16,20 +25,13 @@
     }
   ],
   "categories": [],
-  "posts": [
+  "songs": [
     {
-      "id": "a80d",
-      "title": "lkjdsalkjasd",
-      "description": "sadsad",
-      "image": "asdsad",
-      "video": ""
-    },
-    {
-      "id": "b4b8",
-      "title": "asd",
-      "description": "sadasd",
-      "image": "",
-      "video": ""
+      "id": 1,
+      "title": "Song 1",
+      "artist": "Artist 1",
+      "url": "https://example.com/song1.mp3"
     }
-  ]
+  ],
+  "movies": [{}]
 }
