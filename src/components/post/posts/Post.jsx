@@ -5,6 +5,7 @@ import { Button } from "antd";
 import "./post.css";
 import { IconButton } from "@mui/material";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import DetailPost from "../DetailPost";
 import { useAuth } from "../../context/AuthContextProvider";
 
 const Post = ({ elem }) => {
@@ -14,11 +15,13 @@ const Post = ({ elem }) => {
     setLike((prevLike) => prevLike + (isLiked ? -1 : 1));
     setIsLiked(!isLiked);
   };
-  console.log(elem);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const { deletePost } = usePost();
   const { user } = useAuth();
   return (
-    <div className="post">
+    <div className="post" onClick={handleOpen}>
       <div className="postWrapper">
         <div className="postCenter">
           <p>{elem.user.fullName}</p>
@@ -55,6 +58,7 @@ const Post = ({ elem }) => {
           </IconButton>
           <p>{elem.viewsCount}</p>
         </div>
+        <DetailPost open={open} handleClose={handleClose} elem={elem} />
       </div>
     </div>
   );

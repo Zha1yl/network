@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import Navbar from "../../components/home/navbar/Navbar";
-import SideBar from "../../components/home/sidebar/SideBar";
 import PostList from "../../components/post/postlist/PostList";
 import "./homePage.css";
 import { Button, Input, TextField } from "@mui/material"; // Добавлен TextField из MUI
 import { usePost } from "../../components/context/PostContextProvider";
 import { useAuth } from "../../components/context/AuthContextProvider";
 
-const HomePage = () => {
+const Home = () => {
   const { addPost } = usePost();
   const { user } = useAuth();
   const [title, setTitle] = useState("");
@@ -54,9 +52,9 @@ const HomePage = () => {
 
   return (
     <div>
-      <Navbar />
+      <img src="" alt="" />
+
       <div className="homeContainer">
-        <SideBar />
         <div className="homeContent">
           <div className="addPostForm">
             {error && <p style={{ color: "red" }}>{error}</p>}
@@ -109,4 +107,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

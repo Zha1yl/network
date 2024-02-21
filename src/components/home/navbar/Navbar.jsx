@@ -32,6 +32,13 @@ const Navbar = () => {
   }, []);
 
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
+  useEffect(() => {
+    setSearchParams({
+      q: search,
+    });
+  }, [search]);
   return (
     <div className="navbarContainer">
       <div className="navbarLeft">
@@ -45,6 +52,14 @@ const Navbar = () => {
             type="text"
             placeholder="Найти друзей, посты или видео"
             className="searchInput"
+          />
+          <Search className="searchIcon" />
+          <input
+            type="text" // Правильный тип
+            placeholder="Найти друзей, посты или видео" // Добавьте placeholder для подсказки
+            className="searchInput"
+            value={search} // Убедитесь, что значение поля связано со state
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
       </div>
