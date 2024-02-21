@@ -8,12 +8,19 @@ const PostList = () => {
 
   useEffect(() => {
     getPosts();
-  }, [getPosts]);
+  }, []);
 
   return (
     <div className="postList">
       <div className="postListWrapper">
-        {posts && posts.map((elem) => <Post key={elem.id} elem={elem} />)}
+        <>
+          {posts &&
+            posts.map((elem) => (
+              <>
+                <Post key={elem.id} elem={elem} />
+              </>
+            ))}
+        </>
       </div>
     </div>
   );

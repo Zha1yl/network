@@ -1,10 +1,36 @@
 import { Chat, Notifications, Person, Search } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./navbar.css";
-import person1 from "../../assets/person/1.jpeg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContextProvider";
+import notAva from "../../assets/person/not_have_avatar_page.jpg";
 
 const Navbar = () => {
+  const { logoutUser, user } = useAuth();
+
+  const [showModal, setShowModal] = useState(false);
+  const modalRef = useRef(null);
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
+      closeModal();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const navigate = useNavigate();
   return (
     <div className="navbarContainer">
@@ -15,8 +41,11 @@ const Navbar = () => {
       </div>
       <div className="navbarCenter">
         <div className="searchBar">
-          <Search className="searchIcon" />
-          <input type="Найти друзей, посты или видео" className="searchInput" />
+          <input
+            type="text"
+            placeholder="Найти друзей, посты или видео"
+            className="searchInput"
+          />
         </div>
       </div>
       <div className="navbarRight">
@@ -24,21 +53,60 @@ const Navbar = () => {
           <span className="navbarLink">Главная</span>
           <span className="navbarLink">TimeLine</span>
         </div>
-        <div className="navbarIcons">
-          <div className="navbarIconItem">
-            <Person />
-            <span className="navbarIconBadge">1</span>
-          </div>
-          <div className="navbarIconItem">
-            <Chat />
-            <span className="navbarIconBadge">2</span>
-          </div>
-          <div className="navbarIconItem">
-            <Notifications />
-            <span className="navbarIconBadge">1</span>
-          </div>
+        <div className="navbarIcons">{/* Иконки */}</div>
+        <div className="navbar__modal" ref={modalRef}>
+          {user ? (
+            <>
+              <img
+                src={user.avatarUrl}
+                alt="#"
+                onClick={openModal}
+                className="modal__pic"
+              />
+            </>
+          ) : (
+            <>
+              <img
+                src={notAva}
+                alt=""
+                onClick={openModal}
+                className="modal__pic"
+              />
+            </>
+          )}
+
+          {showModal && (
+            <div className="modal__item">
+              {user ? (
+                <>
+                  <div className="modal-content">
+                    <Link to="/profile" className="modal__link">
+                      Profile
+                    </Link>
+                    <Link
+                      onClick={logoutUser}
+                      to="/register"
+                      className="modal__link"
+                    >
+                      logout
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="modal-content">
+                    <Link to="/login" className="modal__link">
+                      Login
+                    </Link>
+                    <Link to="/register" className="modal__link">
+                      SignIn
+                    </Link>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </div>
-        <img src={person1} alt="" className="navbarImg" />
       </div>
     </div>
   );
