@@ -1,15 +1,12 @@
 import React from "react";
+import NotFoundPage from "../pages/NotFoundPage";
+import ProductPage from "../pages/ProductPage";
+import CartPage from "../pages/CartPage";
+import EditPage from "../pages/EditPage";
 import { Route, Routes } from "react-router-dom";
-import HomePage from "../HomePage";
-import ProductPage from "../ProductPage";
-import CartPage from "../CartPage";
-import AuthPage from "../AuthPage";
-import EditPage from "../EditPage";
-import AdminPage from "../AdminPage";
-import PostPage from "../PostPage";
-import NotFoundPage from "../NotFoundPage";
-import LikesPage from "../LikesPage";
-import MusicPage from "../../components/music/MusicPage";
+import Login from "../components/auth/Login";
+import Registration from "../components/auth/Registration";
+import HomePage from "../pages/home/HomePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -17,10 +14,9 @@ const MainRoutes = () => {
     { id: 2, link: "*", element: <NotFoundPage /> },
     { id: 3, link: "/products", element: <ProductPage /> },
     { id: 4, link: "/cart", element: <CartPage /> },
-    { id: 5, link: "/auth", element: <AuthPage /> },
+    { id: 5, link: "/login", element: <Login /> },
     { id: 6, link: "/edit/:id", element: <EditPage /> },
-    { id: 7, link: "/likes", element: <LikesPage /> },
-    { id: 8, link: "/music", element: <MusicPage /> },
+    { id: 9, link: "/register", element: <Registration /> },
   ];
   return (
     <div>

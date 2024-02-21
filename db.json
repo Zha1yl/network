@@ -33,4 +33,6 @@
       "url": "https://example.com/song1.mp3"
     }
   ]
+  ],
+  "movies": [{}]
 }
