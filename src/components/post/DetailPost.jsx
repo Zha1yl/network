@@ -12,8 +12,17 @@ const DetailPost = (props) => {
     boxShadow: 24,
     bgcolor: "background.paper",
     p: 4,
+    cursor: "pointer",
   };
+
   const { elem, open, handleClose } = props;
+
+  const handleBoxClick = (event) => {
+    event.stopPropagation();
+
+    handleClose();
+  };
+
   return (
     <div>
       <Modal
@@ -22,7 +31,7 @@ const DetailPost = (props) => {
         aria-describedby="modal-modal-description"
         onClose={handleClose}
       >
-        <Box sx={style}>
+        <Box sx={style} onClick={handleBoxClick}>
           <div>
             <img width={300} src={elem.imageUrl} alt={elem.title} />
           </div>

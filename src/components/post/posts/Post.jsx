@@ -28,6 +28,7 @@ const Post = ({ elem }) => {
   console.log(users);
   console.log(user);
   return (
+
     <div class="post post--clickable">
       <div class="post__wrapper">
         <div class="post__center">
@@ -95,6 +96,7 @@ const Post = ({ elem }) => {
                   </div>
                 </div>
               </div>
+
             ) : (
               <>
                 <img
