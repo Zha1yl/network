@@ -65,7 +65,7 @@ const EditProduct = () => {
         value={product.price}
         onChange={handleInput}
         fullWidth
-        name="Price"
+        name="price"
         label="Цена"
         variant="outlined"
       />

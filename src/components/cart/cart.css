@@ -1,6 +1,6 @@
 .cart {
   margin: 5% 0% 0% 25%;
-  width: 50%;
+  width: 100%;
   border-radius: 10px;
 }
 .cart_container {
@@ -9,6 +9,8 @@
   border: 2px solid rgb(223, 214, 214);
   margin-bottom: 20px;
   border-radius: 10px;
+  padding: 15px;
+  gap: 100px;
 }
 .cart_left_side {
   display: flex;
@@ -17,20 +19,7 @@
 .cart_left_img img {
   width: 100px;
 }
-.cart_nav {
-  margin: 5% 0% 0% 25%;
-  width: 50%;
-  border: 2px solid rgb(223, 214, 214);
-  border-radius: 10px;
-}
-.cart_nav_p {
-  display: flex;
-  gap: 17px;
-  margin-left: 10px;
-}
-.cart_nav_cart {
-  margin-left: 60%;
-}
+
 .cart button {
   background-color: #007bff;
   color: #fff;
