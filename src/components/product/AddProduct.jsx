@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import CategorySelect from "./CategorySelect";
 
 const AddProduct = () => {
-  const { addProduct } = useProducts();
+  const { addProduct, categories, getCategories } = useProducts();
   const [product, setProduct] = useState({
     image: "",
     price: 0,
-    category: "",
     description: "",
   });
+  useEffect(() => {
+    getCategories();
+  }, []);
+  console.log(categories);
+
   const handleInput = (e) => {
     if (e.target.name === "price") {
       const obj = {
@@ -49,18 +54,12 @@ const AddProduct = () => {
         label="Картина"
         variant="outlined"
       />
+      <CategorySelect categories={categories} handleInput={handleInput} />
       <TextField
         onChange={handleInput}
         fullWidth
         name="price"
         label="Цена"
-        variant="outlined"
-      />
-      <TextField
-        onChange={handleInput}
-        fullWidth
-        name="category"
-        label="Категория"
         variant="outlined"
       />
       <TextField

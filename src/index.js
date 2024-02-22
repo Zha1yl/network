@@ -7,6 +7,7 @@ import AuthContextProvider from "./components/context/AuthContextProvider";
 import ProductContextProvider from "./components/context/ProductContextProvider";
 import CartContextProvider from "./components/context/CartContextProvider";
 import PostContextProvider from "./components/context/PostContextProvider";
+import { MusicContextProvider } from "./components/music/context/MusicContextProvider";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,7 +16,9 @@ root.render(
       <ProductContextProvider>
         <PostContextProvider>
           <CartContextProvider>
-            <App />
+            <MusicContextProvider>
+              <App />
+            </MusicContextProvider>
           </CartContextProvider>
         </PostContextProvider>
       </ProductContextProvider>

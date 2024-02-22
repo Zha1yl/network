@@ -11,16 +11,6 @@ const Cart = () => {
   console.log(cart);
   return (
     <div>
-      <div className="cart_nav">
-        <div className="cart_nav_p">
-          <p>Все товары</p>
-          <p>Каталог</p>
-          <p>Заказы</p>
-          <div className="cart_nav_cart">
-            <p>Корзина</p>
-          </div>
-        </div>
-      </div>
       <div className="cart">
         {cart.products.map((elem) => (
           <div className="cart_container" key={elem.id}>

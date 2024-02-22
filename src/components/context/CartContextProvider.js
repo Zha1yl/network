@@ -11,7 +11,7 @@ const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 const INIT_STATE = {
   cart: JSON.parse(localStorage.getItem("cart")),
-  cartLength: getProductsCountInCart(),
+  cartLength: getProductsCountInCart() || [],
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
