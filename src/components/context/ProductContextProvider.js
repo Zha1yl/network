@@ -28,7 +28,7 @@ const ProductContextProvider = ({ children }) => {
   // !CREATE
   const addProduct = async (newProduct) => {
     await axios.post(API, newProduct);
-    navigate("/products");
+    navigate("/market");
   };
   // !GET
   const getProducts = async () => {
@@ -54,7 +54,7 @@ const ProductContextProvider = ({ children }) => {
   // !EDIT
   const editProduct = async (id, editedProduct) => {
     await axios.patch(`${API}/${id}`, editedProduct);
-    navigate("/products");
+    navigate("/market");
   };
   // !GET_CATEGORIES
   const getCategories = async () => {
@@ -69,6 +69,17 @@ const ProductContextProvider = ({ children }) => {
     await axios.post(API_CATEGORIES, newCategory);
     getCategories();
   };
+  // ! FILTER
+  const fetchByParams = (query, value) => {
+    const search = new URLSearchParams(window.location.search);
+    if (value === "all") {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+    const url = `${window.location.pathname}?${search}`;
+    navigate(url);
+  };
   const values = {
     addProduct,
     getProducts,
@@ -80,6 +91,7 @@ const ProductContextProvider = ({ children }) => {
     getCategories,
     createCategory,
     categories: state.categories,
+    fetchByParams,
   };
   return (
     <productContext.Provider value={values}>{children}</productContext.Provider>
