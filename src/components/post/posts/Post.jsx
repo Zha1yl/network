@@ -21,13 +21,18 @@ const Post = ({ elem }) => {
   const { deletePost } = usePost();
   const { user } = useAuth();
   return (
-    <div className="post" onClick={handleOpen}>
+    <div className="post">
       <div className="postWrapper">
         <div className="postCenter">
           <p>{elem.user.fullName}</p>
           <span className="postTitle">{elem.title}</span>
           <span className="postTitle">{elem.text}</span>
-          <img className="postImg" src={elem.imageUrl} alt="" />
+          <img
+            className="postImg"
+            src={elem.imageUrl}
+            alt=""
+            onClick={handleOpen}
+          />
           <iframe
             id="fancybox-frame"
             allowfullscreen="true"
