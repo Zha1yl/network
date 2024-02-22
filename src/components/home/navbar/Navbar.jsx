@@ -48,11 +48,6 @@ const Navbar = () => {
       </div>
       <div className="navbarCenter">
         <div className="searchBar">
-          <input
-            type="text"
-            placeholder="Найти друзей, посты или видео"
-            className="searchInput"
-          />
           <Search className="searchIcon" />
           <input
             type="text" // Правильный тип
@@ -70,7 +65,7 @@ const Navbar = () => {
         </div>
         <div className="navbarIcons">{/* Иконки */}</div>
         <div className="navbar__modal" ref={modalRef}>
-          {user ? (
+          {user && user.avatarUrl ? (
             <>
               <img
                 src={user.avatarUrl}
