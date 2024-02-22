@@ -1,8 +1,6 @@
 import React from "react";
 import CartPage from "../pages/CartPage";
 import EditPage from "../pages/EditPage";
-import Registration from "../components/auth/Registration";
-import HomePage from "../pages/home/Home";
 import ProductPage from "../pages/ProductPage";
 import MarketPage from "../pages/MarketPage";
 import { Route, Routes } from "react-router-dom";
