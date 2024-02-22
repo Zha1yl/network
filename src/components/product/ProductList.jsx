@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import ProductCard from "./ProductCard";
 import PaginationControl from "./Pagination";
-import { Link } from "react-router-dom";
 
 const ProductList = () => {
   const { getProducts, products } = useProducts();

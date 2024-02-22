@@ -14,6 +14,10 @@ const Filter = () => {
   useEffect(() => {
     getCategories();
   }, []);
+  const handleFilterChange = (event) => {
+    const selectedCategory = event.target.value;
+    fetchByParams("category", selectedCategory);
+  };
   return (
     <Paper sx={{ padding: 2, width: "250px" }}>
       <FormControl>
@@ -22,7 +26,7 @@ const Filter = () => {
           aria-labelledby="demo-radio-buttons-group-label"
           defaultValue="female"
           name="radio-buttons-group"
-          onChange={(e) => fetchByParams("category", e.target.value)}
+          onChange={handleFilterChange}
         >
           <FormControlLabel control={<Radio />} value={"all"} label={"ALL"} />
           {categories.map((elem) => (
