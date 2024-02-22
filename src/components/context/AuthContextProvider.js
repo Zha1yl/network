@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import {
   ACTIONS,
+  API_AUTH_GET_USERS,
   API_AUTH_LOGIN,
   API_AUTH_REGISTER,
 } from "../../helpers/const";
@@ -10,6 +11,7 @@ const authContext = createContext();
 export const useAuth = () => useContext(authContext);
 
 const INIT_STATE = {
+  users: JSON.parse(localStorage.getItem("users")) || [],
   user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
@@ -18,6 +20,8 @@ const AuthContextProvider = ({ children }) => {
     switch (action.type) {
       case ACTIONS.UPDATE_USER:
         return { ...state, user: action.payload };
+      case ACTIONS.UPDATE_USERS:
+        return { ...state, users: action.payload };
       default:
         return state;
     }
@@ -45,9 +49,15 @@ const AuthContextProvider = ({ children }) => {
     }
   }
 
-  function logoutUser() {
+  async function logoutUser() {
     localStorage.removeItem("user");
     dispatch({ type: ACTIONS.UPDATE_USER, payload: null });
+  }
+
+  async function getAllUsers() {
+    const { data } = await axios.get(API_AUTH_GET_USERS);
+    localStorage.setItem("users", JSON.stringify(data));
+    dispatch({ type: ACTIONS.UPDATE_USERS, payload: data });
   }
 
   const values = {
@@ -55,6 +65,8 @@ const AuthContextProvider = ({ children }) => {
     registerUser,
     logoutUser,
     user: state.user,
+    getAllUsers,
+    users: state.users,
   };
 
   return <authContext.Provider value={values}>{children}</authContext.Provider>;
