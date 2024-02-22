@@ -15,11 +15,11 @@ root.render(
     <AuthContextProvider>
       <ProductContextProvider>
         <PostContextProvider>
-          {/* <CartContextProvider> */}
-          <MusicContextProvider>
-            <App />
-          </MusicContextProvider>
-          {/* </CartContextProvider> */}
+          <CartContextProvider>
+            <MusicContextProvider>
+              <App />
+            </MusicContextProvider>
+          </CartContextProvider>
         </PostContextProvider>
       </ProductContextProvider>
     </AuthContextProvider>

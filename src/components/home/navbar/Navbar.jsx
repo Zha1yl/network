@@ -1,4 +1,4 @@
-import { Chat, Notifications, Person, Search } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
 import React, { useEffect, useRef, useState } from "react";
 import "./navbar.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
