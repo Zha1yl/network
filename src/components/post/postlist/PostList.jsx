@@ -17,18 +17,18 @@ const PostList = () => {
     const searchQuery = searchParams.get("q") || "";
     return post.title.toLowerCase().includes(searchQuery.toLowerCase());
   });
-
+  console.log(posts);
   return (
     <div className="postList">
       <div className="postListWrapper">
         {filteredPosts.map((elem) => (
-          <Post key={elem.id} elem={elem} />
+          <Post key={elem._id} elem={elem} />
         ))}
         <>
           {posts &&
             posts.map((elem) => (
               <>
-                <Post key={elem.id} elem={elem} />
+                <Post key={elem._id} elem={elem} />
               </>
             ))}
         </>

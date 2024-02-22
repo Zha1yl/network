@@ -65,7 +65,7 @@ const Navbar = () => {
         </div>
         <div className="navbarIcons">{/* Иконки */}</div>
         <div className="navbar__modal" ref={modalRef}>
-          {user ? (
+          {user && user.avatarUrl ? (
             <>
               <img
                 src={user.avatarUrl}

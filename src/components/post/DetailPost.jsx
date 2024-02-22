@@ -24,11 +24,11 @@ const DetailPost = (props) => {
       >
         <Box sx={style}>
           <div>
-            <img width={300} src={elem.image} alt={elem.title} />
+            <img width={300} src={elem.imageUrl} alt={elem.title} />
           </div>
           <div>
             <h1>{elem.title}</h1>
-            <p>{elem.description}</p>
+            <p>{elem.text}</p>
           </div>
         </Box>
       </Modal>
