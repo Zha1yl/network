@@ -1,6 +1,6 @@
-export const getLocalStorage = () => {
-  const cart = JSON.parse(localStorage.getItem("cart"));
-  return cart;
+export const getLocalStorage = (key) => {
+  const data = JSON.parse(localStorage.getItem(key));
+  return data;
 };
 
 export const calcTotalPrice = (products) => {
@@ -13,6 +13,6 @@ export const calcSubPrice = (elem) => {
 };
 
 export const getProductsCountInCart = () => {
-  let cart = getLocalStorage();
+  let cart = getLocalStorage("cart");
   return cart ? cart.products.length : 0;
 };

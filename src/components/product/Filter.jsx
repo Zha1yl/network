@@ -15,6 +15,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../context/CartContextProvider";
 import AddIcon from "@mui/icons-material/Add";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const Filter = () => {
   const { categories, getCategories, fetchByParams, getProducts } =
@@ -96,6 +97,14 @@ const Filter = () => {
             "& .MuiInput-underline:before": { borderBottom: "none" },
           }}
         />
+      </Tooltip>
+      <Tooltip title="Перейти в избранные">
+        <Link
+          to="/favorites"
+          style={{ marginLeft: "20px", textDecoration: "none" }}
+        >
+          <FavoriteIcon />
+        </Link>
       </Tooltip>
       <Tooltip title="Добавить товар">
         <Link

@@ -33,4 +33,20 @@
   font-size: 14px;
   font-weight: bolder;
 }
-
+.favorite {
+  margin: 5% 0% 0% 25%;
+  width: 100%;
+  border-radius: 10px;
+}
+.favorite-container {
+  display: flex;
+  justify-content: space-around;
+  border: 2px solid rgb(223, 214, 214);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 15px;
+  gap: 40px;
+}
+.favorite-container img {
+  width: 100px;
+}

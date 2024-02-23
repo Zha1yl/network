@@ -8,7 +8,7 @@ import ProductContextProvider from "./components/context/ProductContextProvider"
 import CartContextProvider from "./components/context/CartContextProvider";
 import PostContextProvider from "./components/context/PostContextProvider";
 import { MusicContextProvider } from "./components/context/MusicContextProvider";
-
+import FavoritesContextProvider from "./components/context/FavoritesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +18,9 @@ root.render(
         <PostContextProvider>
           <CartContextProvider>
             <MusicContextProvider>
-              <App />
+              <FavoritesContextProvider>
+                <App />
+              </FavoritesContextProvider>
             </MusicContextProvider>
           </CartContextProvider>
         </PostContextProvider>
