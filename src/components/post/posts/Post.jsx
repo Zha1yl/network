@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { usePost } from "../../context/PostContextProvider";
 import { Button } from "antd";
 import "./post.css";
@@ -10,25 +10,54 @@ import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
 
 const Post = ({ elem }) => {
-  const [like, setLike] = useState(elem.like);
-  const [isLiked, setIsLiked] = useState(false);
-  const handleLikeClick = () => {
-    setLike((prevLike) => prevLike + (isLiked ? -1 : 1));
-    setIsLiked(!isLiked);
-  };
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { deletePost } = usePost();
 
-  const { user, getAllUsers, users } = useAuth();
+  const { getAllUsers, users } = useAuth();
+  const { user } = useAuth();
   useEffect(() => {
     getAllUsers();
   }, []);
   console.log(users);
   console.log(user);
-  return (
+  console.log(elem);
+  // ! логика лайка
 
+  // Функция для постановки лайка
+  function likePost(postId, userId) {
+    // Получаем текущее состояние лайков из localStorage
+    let likes = JSON.parse(localStorage.getItem("likes")) || {};
+
+    // Проверяем, есть ли уже лайк от данного пользователя
+    if (likes[postId] && likes[postId][userId]) {
+      // Если да, уменьшаем счетчик лайков и удаляем лайк пользователя
+      likes[postId].count--;
+      delete likes[postId][userId];
+    } else {
+      // Если нет, увеличиваем счетчик лайков и добавляем лайк пользователя
+      if (!likes[postId]) {
+        likes[postId] = { count: 0 };
+      }
+      likes[postId].count++;
+      likes[postId][userId] = true;
+    }
+
+    // Сохраняем обновленное состояние лайков в localStorage
+    localStorage.setItem("likes", JSON.stringify(likes));
+
+    // Возвращаем обновленное количество лайков
+    return likes[postId].count;
+  }
+
+  // Пример использования функции likePost
+  const postId = "123"; // ID поста
+  const userId = "456"; // ID пользователя
+  const likeCount = likePost(postId, userId);
+  console.log("Количество лайков:", likeCount);
+
+  return (
     <div class="post post--clickable">
       <div class="post__wrapper">
         <div class="post__center">
@@ -96,7 +125,6 @@ const Post = ({ elem }) => {
                   </div>
                 </div>
               </div>
-
             ) : (
               <>
                 <img
@@ -111,13 +139,17 @@ const Post = ({ elem }) => {
           <div className="btns_container">
             <div
               class="post__button post__button--like"
-              onClick={handleLikeClick}
+              onClick={() => likePost(elem._id, user._id)}
             >
               <span class="post__like-icon">
-                {isLiked ? (
-                  <HeartFilled style={{ color: "red" }} />
+                <HeartFilled style={{ color: "red" }} />
+                <HeartOutlined />
+                {likeCount > 0 ? (
+                  <>
+                    <p>{likeCount}</p>
+                  </>
                 ) : (
-                  <HeartOutlined />
+                  <></>
                 )}
               </span>
             </div>
