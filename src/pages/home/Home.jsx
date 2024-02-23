@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PostList from "../../components/post/postlist/PostList";
 import "./homePage.css";
-import { Button, Input, TextField } from "@mui/material"; // Добавлен TextField из MUI
+import { Button, Input, TextField } from "@mui/material";
 import { usePost } from "../../components/context/PostContextProvider";
 import { useAuth } from "../../components/context/AuthContextProvider";
 
@@ -63,35 +63,55 @@ const Home = () => {
               value={title}
               type="text"
               placeholder="Название поста"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{
+                marginBottom: "16px",
+                fontSize: "16px",
+                marginRight: "16px",
+              }}
             />
             <Input
               onChange={handleTextChange}
               value={text}
               type="text"
               placeholder="Описание"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{
+                marginBottom: "16px",
+                fontSize: "16px",
+                marginRight: "16px",
+              }}
             />
             <Input
               onChange={handleImageUrlChange}
               value={imageUrl}
               type="url"
               placeholder="Ссылка на изображение"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{
+                marginBottom: "16px",
+                fontSize: "16px",
+                marginRight: "16px",
+              }}
             />
             <Input
               onChange={handleVideoUrlChange}
               value={videoUrl}
               type="url"
               placeholder="Ссылка на изображение"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{
+                marginBottom: "16px",
+                fontSize: "16px",
+                marginRight: "16px",
+              }}
             />
             {/* TextField для ввода тегов */}
             <Input
               onChange={handleTagsChange}
               value={tags}
               placeholder="Тэги (разделите запятыми)"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{
+                marginBottom: "16px",
+                fontSize: "16px",
+                marginRight: "16px",
+              }}
             />
             <Button
               onClick={handleClick}

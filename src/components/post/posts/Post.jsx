@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Menu, Dropdown } from "antd";
 import { usePost } from "../../context/PostContextProvider";
-import { Button } from "antd";
 import "./post.css";
-import { IconButton } from "@mui/material";
-import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { HeartFilled, HeartOutlined, MoreOutlined } from "@ant-design/icons";
 import DetailPost from "../DetailPost";
 import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
@@ -27,36 +25,62 @@ const Post = ({ elem }) => {
   }, []);
   console.log(users);
   console.log(user);
-  return (
 
-    <div class="post post--clickable">
-      <div class="post__wrapper">
-        <div class="post__center">
+  const moreIconStyle = {
+    fontSize: "20px",
+    color: "black",
+    cursor: "pointer",
+  };
+
+  // Меню
+  const menu = (
+    <Menu>
+      <Menu.Item key="1" onClick={() => console.log("Action 1")}>
+        EDIT
+      </Menu.Item>
+      <Menu.Item
+        key="2"
+        onClick={() => user && deletePost(elem._id, user.token)}
+      >
+        DELETE
+      </Menu.Item>
+    </Menu>
+  );
+
+  return (
+    <div className="post post--clickable">
+      <div className="post__wrapper">
+        <div className="post__center">
           <div className="center__block">
-            <div className="center__block_img">
-              {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
-                .length > 0 ? (
-                <img
-                  src={
-                    users.filter((u) => u._id === elem.user._id)[0].avatarUrl
-                  }
-                  alt=""
-                />
-              ) : (
-                <img src={notAva} alt="" />
-              )}
-            </div>
             <div>
-              <p class="post__user">{elem.user.fullName}</p>
-              <p class="post__user">{elem.updatedAt}</p>
+              <div className="center__block_img">
+                {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
+                  .length > 0 ? (
+                  <img
+                    src={
+                      users.filter((u) => u._id === elem.user._id)[0].avatarUrl
+                    }
+                    alt=""
+                  />
+                ) : (
+                  <img src={notAva} alt="" />
+                )}
+              </div>
+              <div>
+                <p className="post__user">{elem.user.fullName}</p>
+                <p className="post__user">{elem.updatedAt}</p>
+              </div>
             </div>
+            <Dropdown overlay={menu} trigger={["click"]}>
+              <MoreOutlined style={moreIconStyle} />
+            </Dropdown>
           </div>
-          <p class="post__text">{elem.text}</p>
-          <div class="post__video-container">
+          <p className="post__text">{elem.text}</p>
+          <div className="post__video-container">
             {elem.videoUrl ? (
               <div className="post_and_film">
                 <img
-                  class="post_and_film1"
+                  className="post_and_film1"
                   src={elem.imageUrl}
                   alt=""
                   onClick={handleOpen}
@@ -64,7 +88,7 @@ const Post = ({ elem }) => {
                 <div className="iframes__block">
                   <div className="iframe__container">
                     <iframe
-                      class="post__video"
+                      className="post__video"
                       id="fancybox-frame"
                       allowfullscreen="true"
                       webkitallowfullscreen="true"
@@ -79,7 +103,7 @@ const Post = ({ elem }) => {
                     ></iframe>
                     <div className="iframe__container">
                       <iframe
-                        class="post__video"
+                        className="post__video"
                         id="fancybox-frame"
                         allowfullscreen="true"
                         webkitallowfullscreen="true"
@@ -96,11 +120,10 @@ const Post = ({ elem }) => {
                   </div>
                 </div>
               </div>
-
             ) : (
               <>
                 <img
-                  class="post__image"
+                  className="post__image"
                   src={elem.imageUrl}
                   alt=""
                   onClick={handleOpen}
@@ -108,16 +131,17 @@ const Post = ({ elem }) => {
               </>
             )}
           </div>
+
           <div className="btns_container">
             <div
-              class="post__button post__button--like"
+              className="post__button post__button--like"
               onClick={handleLikeClick}
             >
-              <span class="post__like-icon">
+              <span className="post__like-icon">
                 {isLiked ? (
-                  <HeartFilled style={{ color: "red" }} />
+                  <HeartFilled style={{ color: "red", fontSize: "24px" }} />
                 ) : (
-                  <HeartOutlined />
+                  <HeartOutlined style={{ fontSize: "24px" }} />
                 )}
               </span>
             </div>
@@ -131,7 +155,7 @@ const Post = ({ elem }) => {
               </button>
             )}
 
-            <p class="post__views-count">{elem.viewsCount}</p>
+            <p className="post__views-count">{elem.viewsCount}</p>
           </div>
         </div>
         <DetailPost open={open} handleClose={handleClose} elem={elem} />
