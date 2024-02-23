@@ -1,11 +1,14 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { ACTIONS } from "../../helpers/const";
-import { getLocalStorage } from "../../helpers/functions";
+import {
+  getLocalStorage,
+  getProductsCountInFavorites,
+} from "../../helpers/functions";
 const favoritesContext = createContext();
 export const useFavorites = () => useContext(favoritesContext);
 const INIT_STATE = {
   favorites: [],
-  favorLength: 0,
+  favorLength: getProductsCountInFavorites() || [],
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -60,6 +63,7 @@ const FavoritesContextProvider = ({ children }) => {
     favorites: state.favorites,
     addToFavorites,
     removeFromFavorites,
+    getProductsCountInFavorites,
   };
   return (
     <favoritesContext.Provider value={values}>

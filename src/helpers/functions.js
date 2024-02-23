@@ -16,3 +16,7 @@ export const getProductsCountInCart = () => {
   let cart = getLocalStorage("cart");
   return cart ? cart.products.length : 0;
 };
+export const getProductsCountInFavorites = () => {
+  let favorites = getLocalStorage("favorites");
+  return favorites ? favorites.length : 0;
+};
