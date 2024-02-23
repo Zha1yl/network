@@ -1,0 +1,34 @@
+.music-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  gap: 20px;
+}
+
+.player-title {
+  font-size: 24px;
+}
+
+.track-info {
+  font-size: 18px;
+}
+
+.controls {
+  display: flex;
+  gap: 20px;
+}
+
+.control-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.control-button svg {
+  font-size: 32px;
+}
+
+/* Дополнительные стили при необходимости */

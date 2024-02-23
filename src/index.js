@@ -7,7 +7,8 @@ import AuthContextProvider from "./components/context/AuthContextProvider";
 import ProductContextProvider from "./components/context/ProductContextProvider";
 import CartContextProvider from "./components/context/CartContextProvider";
 import PostContextProvider from "./components/context/PostContextProvider";
-import { MusicContextProvider } from "./components/music/context/MusicContextProvider";
+import { MusicContextProvider } from "./components/context/MusicContextProvider";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
