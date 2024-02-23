@@ -11,8 +11,8 @@ const Favorites = () => {
     getFavorites();
   }, []);
 
-  const handleRemoveAndAddToCart = async (product) => {
-    await removeFromFavorites(product);
+  const handleRemoveAndAddToCart = async (id, product) => {
+    await removeFromFavorites(id);
     addProductToCart(product);
   };
 
@@ -27,7 +27,7 @@ const Favorites = () => {
             <div>
               <p>{elem.price}$</p>
               <p>{elem.description}</p>
-              <Button onClick={() => handleRemoveAndAddToCart(elem.id)}>
+              <Button onClick={() => handleRemoveAndAddToCart(elem.id, elem)}>
                 Добавить в корзину
               </Button>
               <IconButton onClick={() => removeFromFavorites(elem.id)}>
