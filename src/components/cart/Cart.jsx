@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./cart.css";
 import { useCart } from "../context/CartContextProvider";
 
 const Cart = () => {
-  const { getCart, cart, changeProductCount, deleteProductFromCart } =
-    useCart();
-  useEffect(() => {
-    getCart();
-  }, []);
-  console.log(cart);
+  const { cart, changeProductCount, deleteProductFromCart } = useCart();
+
+  // Вычисляем общую сумму покупок
+  const totalAmount = cart.products.reduce(
+    (total, elem) => total + elem.subPrice,
+    0
+  );
+
   return (
     <div>
       <div className="cart">
@@ -40,10 +43,13 @@ const Cart = () => {
             </div>
             <div className="cart_right_side">
               <p>Общая цена: {elem.subPrice}$</p>
-              <button>Оплатить заказ</button>
             </div>
           </div>
         ))}
+        {/* Передаем общую сумму в компонент PayPage через параметр totalAmount */}
+        <Link to={{ pathname: "/pay", state: { totalAmount } }}>
+          <button>Оплатить заказ</button>
+        </Link>
       </div>
     </div>
   );

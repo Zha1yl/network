@@ -9,9 +9,11 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
+import DetailProduct from "./DetailProduct";
 
 const ProductCard = ({ elem }) => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart, deleteProductFromCart } =
     useCart();
@@ -25,7 +27,18 @@ const ProductCard = ({ elem }) => {
   const handleLikeClick = () => {
     setLike(!like);
   };
-  
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  // Открывать детальный обзор только при клике на изображение или описание товара
+  const handleDetailClick = (event) => {
+    // Проверяем, что клик произошел не на кнопке добавления в корзину
+    if (!event.target.closest(".add-to-cart-button")) {
+      handleOpen();
+    }
+  };
+
   return (
     <div>
       <div style={{ position: "relative", display: "inline-block" }}>
@@ -38,12 +51,13 @@ const ProductCard = ({ elem }) => {
           {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
         <div style={{ display: "flex", gap: "20px", ml: "191px" }}>
-          <div class="product">
+          <div class="product" onClick={handleDetailClick}>
             <img src={elem.image} alt="" />
             <p class="price">{elem.price} $</p>
             <h3>{elem.description}</h3>
             <h3>{elem.category}</h3>
             <IconButton
+              className="add-to-cart-button"
               sx={{
                 backgroundColor: checkProductInCart(elem.id) ? "lightBlue" : "",
                 color: checkProductInCart(elem.id) ? "white" : "",
@@ -65,6 +79,7 @@ const ProductCard = ({ elem }) => {
           </div>
         </div>
       </div>
+      <DetailProduct open={open} handleClose={handleClose} elem={elem} />
     </div>
   );
 };
