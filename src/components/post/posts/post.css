@@ -26,6 +26,7 @@
 .center__block {
   padding-top: 40px;
   display: flex;
+  justify-content: space-between;
 }
 .center__block_img {
   width: 50px;
@@ -79,4 +80,9 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+}
+
+.css-me73ms {
+  border: none !important;
+  outline: none !important;
 }
