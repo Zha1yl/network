@@ -2,3 +2,9 @@
   display: flex;
   position: relative;
 }
+.wrapper1 {
+  width: 80vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}

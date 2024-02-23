@@ -51,10 +51,8 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <img src="" alt="" />
-
-      <div className="homeContainer">
+    <div className="wrapper1">
+      <div className="homeContainer wrapper">
         <div className="homeContent">
           <div className="addPostForm">
             {error && <p style={{ color: "red" }}>{error}</p>}

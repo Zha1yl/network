@@ -4,6 +4,7 @@ import "./navbar.css";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
+import vk_logo from "../../assets/post/logo_vk.svg";
 
 const Navbar = () => {
   const { logoutUser, user } = useAuth();
@@ -41,39 +42,37 @@ const Navbar = () => {
   }, [search]);
   return (
     <div className="navbarContainer">
-      <div className="navbarLeft">
-        <span className="logo" onClick={() => navigate(`/`)}>
-          Вконтакте
-        </span>
-      </div>
-      <div className="navbarCenter">
-        <div className="searchBar">
-          <Search className="searchIcon" />
-          <input
-            type="text" // Правильный тип
-            placeholder="Найти друзей, посты или видео" // Добавьте placeholder для подсказки
-            className="searchInput"
-            value={search} // Убедитесь, что значение поля связано со state
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <div className="wrapper">
+        <div className="navbarLeft">
+          <span className="logo" onClick={() => navigate(`/`)}>
+            <img src={vk_logo} alt="" className="vk__logo" />
+            ВКОНТАКТЕ
+          </span>
         </div>
-      </div>
-      <div className="navbarRight">
-        <div className="navbarLinks">
-          <span className="navbarLink">Главная</span>
-          <span className="navbarLink">TimeLine</span>
+        <div className="navbarCenter">
+          <div className="searchBar">
+            <Search className="searchIcon" />
+            <input
+              type="text" // Правильный тип
+              placeholder="Поиск" // Добавьте placeholder для подсказки
+              className="searchInput"
+              value={search} // Убедитесь, что значение поля связано со state
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="navbarIcons">{/* Иконки */}</div>
-        <div className="navbar__modal" ref={modalRef}>
+        <div className="navbarRight">
+          <div className="navbarIcons">Иконки</div>
+          {/* <div className="navbar__modal" ref={modalRef}> */}
           {user && user.avatarUrl ? (
-            <>
+            <div className="modal__pic_c">
               <img
                 src={user.avatarUrl}
                 alt="#"
                 onClick={openModal}
                 className="modal__pic"
               />
-            </>
+            </div>
           ) : (
             <>
               <img
