@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import { useCart } from "../context/CartContextProvider";
 import "./product.css";
@@ -6,7 +6,8 @@ import { IconButton } from "@mui/material";
 import { AddShoppingCart } from "@mui/icons-material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ elem }) => {
@@ -14,11 +15,17 @@ const ProductCard = ({ elem }) => {
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart, deleteProductFromCart } =
     useCart();
-    console.log(elem);
+  const [like, setLike] = useState(false);
+
   const handleClick = () => {
     deleteProductFromCart(elem.id);
     deleteProduct(elem.id);
   };
+
+  const handleLikeClick = () => {
+    setLike(!like);
+  };
+  
   return (
     <div>
       <div style={{ position: "relative", display: "inline-block" }}>
@@ -26,8 +33,9 @@ const ProductCard = ({ elem }) => {
           style={{ position: "absolute", top: 0, right: 0 }}
           aria-label="Добавить в избранное"
           title="Добавить в избранное"
+          onClick={handleLikeClick}
         >
-          <BookmarkBorderIcon />
+          {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
         <div style={{ display: "flex", gap: "20px", ml: "191px" }}>
           <div class="product">
@@ -41,13 +49,17 @@ const ProductCard = ({ elem }) => {
                 color: checkProductInCart(elem.id) ? "white" : "",
               }}
               onClick={() => addProductToCart(elem)}
+              title="Добавить в корзину"
             >
               <AddShoppingCart />
             </IconButton>
-            <IconButton onClick={() => navigate(`/edit/${elem.id}`)}>
+            <IconButton
+              title="Редактировать товар"
+              onClick={() => navigate(`/edit/${elem.id}`)}
+            >
               <EditNoteIcon />
             </IconButton>
-            <IconButton onClick={handleClick}>
+            <IconButton title="Удалить товар" onClick={handleClick}>
               <DeleteOutlineIcon />
             </IconButton>
           </div>

@@ -1,44 +1,117 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import {
+  Badge,
+  Button,
   FormControl,
-  FormControlLabel,
-  FormLabel,
+  Menu,
+  MenuItem,
   Paper,
-  Radio,
   RadioGroup,
+  TextField,
+  Tooltip,
 } from "@mui/material";
+import { Link, useSearchParams } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useCart } from "../context/CartContextProvider";
+import AddIcon from "@mui/icons-material/Add";
 
 const Filter = () => {
-  const { categories, getCategories, fetchByParams } = useProducts();
+  const { categories, getCategories, fetchByParams, getProducts } =
+    useProducts();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [search, setSearch] = useState(searchParams.get("q") || "");
+  const [anchorEl, setAnchor] = useState(null);
+  const [badgeCount, setBadgeCount] = useState(0);
+  const { addProductToCart, getProductsCountInCart } = useCart();
+  useEffect(() => {
+    setBadgeCount(getProductsCountInCart());
+  }, [addProductToCart]);
+  useEffect(() => {
+    setSearchParams({
+      q: search,
+    });
+    getProducts();
+  }, [search]);
   useEffect(() => {
     getCategories();
   }, []);
-  const handleFilterChange = (event) => {
-    const selectedCategory = event.target.value;
+
+  const handleFilterChange = (e) => {
+    const selectedCategory = e.target.value;
     fetchByParams("category", selectedCategory);
   };
+
+  const handleMenuOpen = (e) => {
+    setAnchor(e.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchor(null);
+  };
+
+  const handleCategorySelect = (category) => {
+    fetchByParams("category", category);
+    handleMenuClose();
+  };
+
+  console.log(categories);
   return (
-    <Paper sx={{ padding: 2, width: "250px" }}>
+    <Paper
+      sx={{ padding: 2, width: "250px", display: "flex", alignItems: "center" }}
+      style={{ marginLeft: "38%", width: "293%" }}
+    >
       <FormControl>
-        <FormLabel id="demo-radio-buttons-group-label">Категория</FormLabel>
-        <RadioGroup
-          aria-labelledby="demo-radio-buttons-group-label"
-          defaultValue="female"
-          name="radio-buttons-group"
-          onChange={handleFilterChange}
-        >
-          <FormControlLabel control={<Radio />} value={"all"} label={"ALL"} />
-          {categories.map((elem) => (
-            <FormControlLabel
-              key={elem.id}
-              value={elem.name}
-              label={elem.name}
-              control={<Radio />}
-            />
-          ))}
+        <RadioGroup onChange={handleFilterChange}>
+          <Button onClick={handleMenuOpen}>Категории</Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={() => handleCategorySelect("all")}>
+              Все товары
+            </MenuItem>
+            {categories.map((elem) => (
+              <MenuItem
+                key={elem.id}
+                onClick={() => handleCategorySelect(elem.name)}
+              >
+                {elem.name}
+              </MenuItem>
+            ))}
+          </Menu>
         </RadioGroup>
       </FormControl>
+      <Tooltip title="Найти товар">
+        <TextField
+          onChange={(e) => setSearch(e.target.value)}
+          fullWidth
+          variant="standard"
+          label="Поиск..."
+          sx={{
+            marginLeft: "20px",
+            marginTop: "-15px",
+            flex: 1,
+            "& .MuiInput-underline:before": { borderBottom: "none" },
+          }}
+        />
+      </Tooltip>
+      <Tooltip title="Добавить товар">
+        <Link
+          to="/products"
+          style={{ marginLeft: "20px", textDecoration: "none" }}
+        >
+          <AddIcon />
+        </Link>
+      </Tooltip>
+      <Tooltip title="Перейти в корзину">
+        <Link to="/cart" style={{ marginLeft: "20px", textDecoration: "none" }}>
+          <Badge badgeContent={badgeCount} color="success">
+            <ShoppingCartIcon />
+          </Badge>
+        </Link>
+      </Tooltip>
     </Paper>
   );
 };
