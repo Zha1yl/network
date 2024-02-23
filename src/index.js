@@ -9,17 +9,18 @@ import CartContextProvider from "./components/context/CartContextProvider";
 import PostContextProvider from "./components/context/PostContextProvider";
 import { MusicContextProvider } from "./components/context/MusicContextProvider";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <AuthContextProvider>
       <ProductContextProvider>
         <PostContextProvider>
-          <MusicContextProvider>
-            <CartContextProvider>
+          <CartContextProvider>
+            <MusicContextProvider>
               <App />
-            </CartContextProvider>
-          </MusicContextProvider>
+            </MusicContextProvider>
+          </CartContextProvider>
         </PostContextProvider>
       </ProductContextProvider>
     </AuthContextProvider>

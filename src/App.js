@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "./components/home/navbar/Navbar";
-
 import SideBar from "./components/home/sidebar/SideBar";
 import MainRoutes from "./routes/MainRoutes";
 

@@ -57,9 +57,9 @@ const SideBar = () => {
             <Bookmark className="sidebarIcon" />
             <span
               className="sidebarListItemText"
-              onClick={() => navigate("/favourites")}
+              onClick={() => navigate("/likes")}
             >
-              Избранное
+              Лайки
             </span>
           </li>
           <li className="sidebarListItem">

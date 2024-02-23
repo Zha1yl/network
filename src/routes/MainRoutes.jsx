@@ -1,10 +1,13 @@
 import React from "react";
-import NotFoundPage from "../pages/NotFoundPage";
-import ProductPage from "../pages/ProductPage";
 import CartPage from "../pages/CartPage";
 import EditPage from "../pages/EditPage";
+import ProductPage from "../pages/ProductPage";
+import MarketPage from "../pages/MarketPage";
 import { Route, Routes } from "react-router-dom";
+import PostPage from "../pages/PostPage";
+import NotFoundPage from "../pages/NotFoundPage";
 import Login from "../components/auth/Login";
+import Favourites from "../pages/Favourites";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
 import MusicPage from "../pages/MusicPage";
@@ -19,6 +22,10 @@ const MainRoutes = () => {
     { id: 6, link: "/edit/:id", element: <EditPage /> },
     { id: 7, link: "/register", element: <Registration /> },
     { id: 8, link: "/music", element: <MusicPage /> },
+    { id: 9, link: "/market", element: <MarketPage /> },
+    { id: 10, link: "/posts", element: <PostPage /> },
+    { id: 11, link: "/register", element: <Registration /> },
+    { id: 12, link: "/favorites", element: <Favourites /> },
   ];
   return (
     <div>
