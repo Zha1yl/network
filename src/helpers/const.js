@@ -5,6 +5,7 @@ export const API_AUTH_LOGIN = "http://localhost:3333/auth/login";
 export const API_AUTH_REGISTER = "http://localhost:3333/auth/register";
 export const API_AUTH_GET_USERS = "http://localhost:3333/auth/all";
 export const API_MOVIE = "http://localhost:8000/movies";
+export const API_MUSIC = "http://localhost:8000/music";
 export const ACTIONS = {
   GET_PRODUCTS: "GET_PRODUCTS",
   GET_ONE_PRODUCTS: "GET_ONE_PRODUCTS",
@@ -16,4 +17,5 @@ export const ACTIONS = {
   UPDATE_USERS: "UPDATE_USERS",
   GET_MOVIES: "GET_MOVIES",
   GET_ONE_MOVIE: "GET_ONE_MOVIE",
+  GET_FAVORITES: "GET_FAVORITES",
 };

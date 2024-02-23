@@ -17,16 +17,8 @@
       "id": 1
     },
     {
-      "image": "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_500,c_limit/g1ljiszo4qhthfpluzbt/nike-joyride.jpg",
-      "price": 105,
-      "category": "обувь",
-      "description": "Nike Air",
-      "id": 2,
-      "Price": "10"
-    },
-    {
       "image": "https://assets.ajio.com/medias/sys_master/root/20231117/n1mv/6556c08bafa4cf41f58f89d7/-473Wx593H-466807731-silver-MODEL.jpg",
-      "price": 115,
+      "price": 1154356,
       "category": "Спортивка",
       "description": "Puma",
       "id": 3
@@ -58,6 +50,13 @@
       "description": "Puma",
       "category": "Обувь",
       "id": 8
+    },
+    {
+      "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
+      "price": 110,
+      "category": "Кроссовки",
+      "description": "Puma",
+      "id": 10
     }
   ],
   "categories": [
@@ -68,6 +67,10 @@
     {
       "name": "Одежда",
       "id": 2
+    },
+    {
+      "name": "Кроссовки",
+      "id": 3
     }
   ],
   "songs": [

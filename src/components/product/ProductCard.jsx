@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import { useCart } from "../context/CartContextProvider";
 import "./product.css";
@@ -6,18 +6,40 @@ import { IconButton } from "@mui/material";
 import { AddShoppingCart } from "@mui/icons-material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
-
+import DetailProduct from "./DetailProduct";
+import { useFavorites } from "../context/FavoritesContext";
 const ProductCard = ({ elem }) => {
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart, deleteProductFromCart } =
     useCart();
-    console.log(elem);
+  const { addToFavorites } = useFavorites();
+  const [like, setLike] = useState(false);
+
   const handleClick = () => {
     deleteProductFromCart(elem.id);
     deleteProduct(elem.id);
+  };
+
+  const handleLikeClick = () => {
+    setLike(!like);
+    addToFavorites(elem);
+  };
+
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  // Открывать детальный обзор только при клике на изображение или описание товара
+  const handleDetailClick = (event) => {
+    // Проверяем, что клик произошел не на кнопке добавления в корзину
+    if (!event.target.closest(".add-to-cart-button")) {
+      handleOpen();
+    }
   };
   return (
     <div>
@@ -26,33 +48,40 @@ const ProductCard = ({ elem }) => {
           style={{ position: "absolute", top: 0, right: 0 }}
           aria-label="Добавить в избранное"
           title="Добавить в избранное"
+          onClick={handleLikeClick}
         >
-          <BookmarkBorderIcon />
+          {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
         <div style={{ display: "flex", gap: "20px", ml: "191px" }}>
-          <div class="product">
+          <div class="product" onClick={handleDetailClick}>
             <img src={elem.image} alt="" />
             <p class="price">{elem.price} $</p>
             <h3>{elem.description}</h3>
             <h3>{elem.category}</h3>
             <IconButton
+              className="add-to-cart-button"
               sx={{
                 backgroundColor: checkProductInCart(elem.id) ? "lightBlue" : "",
                 color: checkProductInCart(elem.id) ? "white" : "",
               }}
               onClick={() => addProductToCart(elem)}
+              title="Добавить в корзину"
             >
               <AddShoppingCart />
             </IconButton>
-            <IconButton onClick={() => navigate(`/edit/${elem.id}`)}>
+            <IconButton
+              title="Редактировать товар"
+              onClick={() => navigate(`/edit/${elem.id}`)}
+            >
               <EditNoteIcon />
             </IconButton>
-            <IconButton onClick={handleClick}>
+            <IconButton title="Удалить товар" onClick={handleClick}>
               <DeleteOutlineIcon />
             </IconButton>
           </div>
         </div>
       </div>
+      <DetailProduct open={open} handleClose={handleClose} elem={elem} />
     </div>
   );
 };

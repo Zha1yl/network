@@ -8,6 +8,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState({
     image: "",
     price: 0,
+    category: "",
     description: "",
   });
   useEffect(() => {
@@ -42,10 +43,11 @@ const AddProduct = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        marginLeft: "22%",
       }}
     >
       <Typography variant="h4" align="center">
-        Добавление товаров
+        Добавить товар
       </Typography>
       <TextField
         onChange={handleInput}

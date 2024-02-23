@@ -9,6 +9,7 @@
   margin-top: 20px;
   background-color: #fff;
   width: fit-content;
+  margin-left: 113px;
 }
 
 .product-card {
@@ -32,22 +33,20 @@
   font-size: 14px;
   font-weight: bolder;
 }
-
-.market_head {
-  margin: 5% 0% 0% 19%;
-  width: 66%;
-  border: 2px solid rgb(223, 214, 214);
+.favorite {
+  margin: 5% 0% 0% 25%;
+  width: 100%;
   border-radius: 10px;
 }
-.market_head_p {
+.favorite-container {
   display: flex;
-  gap: 17px;
-  margin-left: 10px;
-  padding: 10px;
+  justify-content: space-around;
+  border: 2px solid rgb(223, 214, 214);
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 15px;
+  gap: 40px;
 }
-.market_head_cart {
-  margin-left: 60%;
-}
-.link_no_underline {
-  text-decoration: none;
+.favorite-container img {
+  width: 100px;
 }

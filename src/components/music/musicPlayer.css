@@ -1,0 +1,55 @@
+.music-player {
+  background-color: #1e1e1e;
+  color: white;
+  margin-top: 100px;
+  padding: 20px;
+  border-radius: 40px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background: linear-gradient(
+    45deg,
+    #1db954,
+    #4a90e2
+  ); /* Градиент от Spotify green к Dodger blue */
+  animation: changeColor 1s infinite alternate; /* Анимация изменения цвета фона */
+}
+@keyframes changeColor {
+  from {
+    background: linear-gradient(45deg, #1db954, #4a90e2);
+  }
+  to {
+    background: linear-gradient(45deg, #4a90e2, #1db954);
+  }
+}
+.player-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.track-info {
+  margin-bottom: 20px;
+}
+
+.track-name {
+  font-size: 18px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.control-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #3700ff; /* Spotify green color */
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.control-button:hover {
+  color: #1ed760; /* Lighter green color on hover */
+}
