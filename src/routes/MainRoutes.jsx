@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Login from "../components/auth/Login";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
+import MusicPage from "../pages/MusicPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -16,7 +17,8 @@ const MainRoutes = () => {
     { id: 4, link: "/cart", element: <CartPage /> },
     { id: 5, link: "/login", element: <Login /> },
     { id: 6, link: "/edit/:id", element: <EditPage /> },
-    { id: 9, link: "/register", element: <Registration /> },
+    { id: 7, link: "/register", element: <Registration /> },
+    { id: 8, link: "/music", element: <MusicPage /> },
   ];
   return (
     <div>
