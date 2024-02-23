@@ -50,6 +50,13 @@
       "description": "Puma",
       "category": "Обувь",
       "id": 8
+    },
+    {
+      "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
+      "price": 110,
+      "category": "Кроссовки",
+      "description": "Puma",
+      "id": 10
     }
   ],
   "categories": [
@@ -60,6 +67,10 @@
     {
       "name": "Одежда",
       "id": 2
+    },
+    {
+      "name": "Кроссовки",
+      "id": 3
     }
   ],
   "songs": [
