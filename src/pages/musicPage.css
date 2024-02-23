@@ -1,0 +1,28 @@
+.music-page {
+  width: 100%;
+  height: 100vh;
+  border-radius: 20px;
+  background-image: linear-gradient(
+    120deg,
+    #1ed760,
+    #1db954,
+    #191414,
+    #191414,
+    #1db954,
+    #1ed760
+  );
+  background-size: 600% 100%; /* Для создания эффекта анимации */
+  animation: gradientAnimation 15s ease infinite; /* Анимация цветов */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

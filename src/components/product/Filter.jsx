@@ -15,6 +15,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../context/CartContextProvider";
 import AddIcon from "@mui/icons-material/Add";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useFavorites } from "../context/FavoritesContext";
 
 const Filter = () => {
   const { categories, getCategories, fetchByParams, getProducts } =
@@ -23,10 +25,18 @@ const Filter = () => {
   const [search, setSearch] = useState(searchParams.get("q") || "");
   const [anchorEl, setAnchor] = useState(null);
   const [badgeCount, setBadgeCount] = useState(0);
+  const [favoriteCount, setFavoriteCount] = useState(0);
   const { addProductToCart, getProductsCountInCart } = useCart();
+  const { getProductsCountInFavorites, addToFavorites } = useFavorites();
+
+  useEffect(() => {
+    setFavoriteCount(getProductsCountInFavorites);
+  }, [addToFavorites]);
+
   useEffect(() => {
     setBadgeCount(getProductsCountInCart());
   }, [addProductToCart]);
+
   useEffect(() => {
     setSearchParams({
       q: search,
@@ -96,6 +106,16 @@ const Filter = () => {
             "& .MuiInput-underline:before": { borderBottom: "none" },
           }}
         />
+      </Tooltip>
+      <Tooltip title="Перейти в избранные">
+        <Link
+          to="/favorites"
+          style={{ marginLeft: "20px", textDecoration: "none" }}
+        >
+          <Badge badgeContent={favoriteCount} color="success">
+            <FavoriteIcon />
+          </Badge>
+        </Link>
       </Tooltip>
       <Tooltip title="Добавить товар">
         <Link

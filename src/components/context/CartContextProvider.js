@@ -26,7 +26,7 @@ const CartContextProvider = ({ children }) => {
 
   // !GET
   const getCart = () => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     if (!cart) {
       localStorage.setItem(
         "cart",
@@ -47,7 +47,7 @@ const CartContextProvider = ({ children }) => {
   };
   // !CREATE
   const addProductToCart = (product) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     if (!cart) {
       cart = {
         products: [],
@@ -78,7 +78,7 @@ const CartContextProvider = ({ children }) => {
   };
   // ! проверка товара в корзине
   const checkProductInCart = (id) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     if (cart) {
       let newCart = cart.products.filter((elem) => elem.item.id === id);
       return newCart.length > 0 ? true : false;
@@ -86,7 +86,7 @@ const CartContextProvider = ({ children }) => {
   };
   // !изменение стоимости за один товар
   const changeProductCount = (id, count) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     cart.products = cart.products.map((elem) => {
       if (elem.item.id === id) {
         elem.count = count;
@@ -103,7 +103,7 @@ const CartContextProvider = ({ children }) => {
   };
   // !DELETE
   const deleteProductFromCart = (id) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     cart.products = cart.products.filter((elem) => elem.item.id !== id);
     cart.totalPrice = calcTotalPrice(cart.products);
     localStorage.setItem("cart", JSON.stringify(cart));

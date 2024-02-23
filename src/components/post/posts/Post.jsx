@@ -1,34 +1,49 @@
 import React, { useEffect, useState } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { Menu, Dropdown } from "antd";
+import { useNavigate } from "react-router-dom";
 import { usePost } from "../../context/PostContextProvider";
-import { Button } from "antd";
 import "./post.css";
-import { IconButton } from "@mui/material";
-import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import { HeartFilled, HeartOutlined, MoreOutlined } from "@ant-design/icons";
 import DetailPost from "../DetailPost";
 import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
 
 const Post = ({ elem }) => {
-  const { getOnePost } = usePost();
+  const { getOnePost, deletePost } = usePost();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const { deletePost } = usePost();
 
-  const { getAllUsers, users } = useAuth();
   const { user } = useAuth();
+  const { getAllUsers, users } = useAuth();
   useEffect(() => {
     getAllUsers();
   }, []);
-  // console.log(users);
-  // console.log(user);
-  // console.log(elem);
-  // ! логика лайка
 
-  const likes = JSON.parse(localStorage.getItem("likes")) || {};
+  const moreIconStyle = {
+    fontSize: "20px",
+    color: "black",
+    cursor: "pointer",
+  };
 
-  function likePost(postId, userId) {
+  // Меню
+  const menu = (
+    <Menu>
+      <Menu.Item key="1" onClick={() => console.log("Action 1")}>
+        EDIT
+      </Menu.Item>
+      <Menu.Item
+        key="2"
+        onClick={() => user && deletePost(elem._id, user.token)}
+      >
+        DELETE
+      </Menu.Item>
+    </Menu>
+  );
+
+  // Логика лайка
+
+  const likePost = (postId, userId) => {
     let likes = JSON.parse(localStorage.getItem("likes")) || {};
 
     if (likes[postId] && likes[postId][userId]) {
@@ -42,50 +57,50 @@ const Post = ({ elem }) => {
       likes[postId][userId] = true;
     }
 
-    // Save updated likes to local storage
+    // Сохранение обновленных лайков в локальное хранилище
     localStorage.setItem("likes", JSON.stringify(likes));
 
-    // Return updated like count
+    // Возврат обновленного количества лайков
     return likes[postId].count;
-  }
+  };
 
-  // Get like count for the current post
+  // Получение количества лайков для текущего поста
   const likeCount = likePost(elem._id, user._id);
 
-  // Пример использования функции likePost
-  const postId = "123"; // ID поста
-  const userId = "456"; // ID пользователя
-  console.log(likePost(elem._id, user._id));
-
   return (
-    <div class="post post--clickable">
-      <div class="post__wrapper">
-        <div class="post__center">
+    <div className="post post--clickable">
+      <div className="post__wrapper">
+        <div className="post__center">
           <div className="center__block">
-            <div className="center__block_img">
-              {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
-                .length > 0 ? (
-                <img
-                  src={
-                    users.filter((u) => u._id === elem.user._id)[0].avatarUrl
-                  }
-                  alt=""
-                />
-              ) : (
-                <img src={notAva} alt="" />
-              )}
-            </div>
             <div>
-              <p class="post__user">{elem.user.fullName}</p>
-              <p class="post__user">{elem.updatedAt}</p>
+              <div className="center__block_img">
+                {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
+                  .length > 0 ? (
+                  <img
+                    src={
+                      users.filter((u) => u._id === elem.user._id)[0].avatarUrl
+                    }
+                    alt=""
+                  />
+                ) : (
+                  <img src={notAva} alt="" />
+                )}
+              </div>
+              <div>
+                <p className="post__user">{elem.user.fullName}</p>
+                <p className="post__user">{elem.updatedAt}</p>
+              </div>
             </div>
+            <Dropdown overlay={menu} trigger={["click"]}>
+              <MoreOutlined style={moreIconStyle} />
+            </Dropdown>
           </div>
-          <p class="post__text">{elem.text}</p>
-          <div class="post__video-container">
+          <p className="post__text">{elem.text}</p>
+          <div className="post__video-container">
             {elem.videoUrl ? (
               <div className="post_and_film">
                 <img
-                  class="post_and_film1"
+                  className="post_and_film1"
                   src={elem.imageUrl}
                   alt=""
                   onClick={() => {
@@ -96,31 +111,31 @@ const Post = ({ elem }) => {
                 <div className="iframes__block">
                   <div className="iframe__container">
                     <iframe
-                      class="post__video"
+                      className="post__video"
                       id="fancybox-frame"
-                      allowfullscreen="true"
-                      webkitallowfullscreen="true"
-                      mozallowfullscreen="true"
+                      allowFullScreen={true}
+                      webkitAllowFullScreen={true}
+                      mozAllowFullScreen={true}
                       name="fancybox-frame1707985548812"
-                      frameborder="0"
+                      frameBorder="0"
                       width="300px"
                       height="197px"
-                      hspace="0"
+                      hSpace="0"
                       scrolling="auto"
                       src={elem.videoUrl}
                     ></iframe>
                     <div className="iframe__container">
                       <iframe
-                        class="post__video"
+                        className="post__video"
                         id="fancybox-frame"
-                        allowfullscreen="true"
-                        webkitallowfullscreen="true"
-                        mozallowfullscreen="true"
+                        allowFullScreen={true}
+                        webkitAllowFullScreen={true}
+                        mozAllowFullScreen={true}
                         name="fancybox-frame1707985548812"
-                        frameborder="0"
+                        frameBorder="0"
                         width="300px"
                         height="197px"
-                        hspace="0"
+                        hSpace="0"
                         scrolling="auto"
                         src={elem.videoUrl}
                       ></iframe>
@@ -131,7 +146,7 @@ const Post = ({ elem }) => {
             ) : (
               <>
                 <img
-                  class="post__image"
+                  className="post__image"
                   src={elem.imageUrl}
                   alt=""
                   onClick={handleOpen}
@@ -139,6 +154,7 @@ const Post = ({ elem }) => {
               </>
             )}
           </div>
+
           <div className="btns_container">
             <div className="post--clickable">
               <div className="post__wrapper">
@@ -148,7 +164,7 @@ const Post = ({ elem }) => {
                     onClick={() => likePost(elem._id, user._id)}
                   >
                     <span className="post__like-icon">
-                      {/* Conditional rendering of like icon */}
+                      {/* Условный рендеринг иконки лайка */}
                       {likes[elem._id] && likes[elem._id][user._id] ? (
                         <>
                           <HeartOutlined />
@@ -161,19 +177,10 @@ const Post = ({ elem }) => {
                         </>
                       )}
                     </span>
-                    <div className="post__views-count">
-                      <img
-                        className="post__views_img"
-                        src="https://static.vecteezy.com/ti/gratis-vektor/p1/3538260-mangekyou-sharingan-of-uchiha-itachi-amaterasu-und-tsukuyomi-kostenlos-vektor.jpg"
-                        alt=""
-                      />
-                      <p>{elem.viewsCount}</p>
-                    </div>
                   </div>
                 </div>
               </div>
             </div>
-
             {user && user._id === elem.user._id && (
               <button
                 className="post__button post__button--delete"
@@ -182,6 +189,7 @@ const Post = ({ elem }) => {
                 Delete
               </button>
             )}
+            <p className="post__views-count">{elem.viewsCount}</p>
           </div>
         </div>
         <DetailPost open={open} handleClose={handleClose} elem={elem._id} />

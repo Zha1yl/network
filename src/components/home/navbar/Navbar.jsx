@@ -40,6 +40,7 @@ const Navbar = () => {
       q: search,
     });
   }, [search]);
+
   return (
     <div className="navbarContainer">
       <div className="wrapper">

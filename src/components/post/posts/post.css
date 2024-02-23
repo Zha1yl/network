@@ -28,6 +28,7 @@
 .center__block {
   /* padding-top: 40px; */
   display: flex;
+  justify-content: space-between;
 }
 .center__block_img {
   width: 60px;
