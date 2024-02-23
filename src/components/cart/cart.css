@@ -12,6 +12,11 @@
   padding: 15px;
   gap: 40px;
 }
+.cart_left_p {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .cart_left_side {
   display: flex;
   gap: 50px;
@@ -20,6 +25,11 @@
 }
 .cart_left_img img {
   width: 100px;
+}
+.cart_right_side {
+  display: flex;
+  flex-direction: column;
+  gap: 67px;
 }
 
 .cart button {

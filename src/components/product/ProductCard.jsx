@@ -10,13 +10,14 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useNavigate } from "react-router-dom";
 import DetailProduct from "./DetailProduct";
-
+import { useFavorites } from "../context/FavoritesContext";
 const ProductCard = ({ elem }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart, deleteProductFromCart } =
     useCart();
+  const { addToFavorites } = useFavorites();
   const [like, setLike] = useState(false);
 
   const handleClick = () => {
@@ -26,7 +27,9 @@ const ProductCard = ({ elem }) => {
 
   const handleLikeClick = () => {
     setLike(!like);
+    addToFavorites(elem);
   };
+
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,7 +41,6 @@ const ProductCard = ({ elem }) => {
       handleOpen();
     }
   };
-
   return (
     <div>
       <div style={{ position: "relative", display: "inline-block" }}>
