@@ -1,7 +1,9 @@
 import { Box, Modal } from "@mui/material";
 import React from "react";
+import { usePost } from "../context/PostContextProvider";
 
 const DetailPost = (props) => {
+  const { onePost } = usePost();
   const style = {
     position: "absolute",
     top: "30%",
@@ -14,7 +16,7 @@ const DetailPost = (props) => {
     p: 4,
     cursor: "pointer",
   };
-
+  console.log(onePost);
   const { elem, open, handleClose } = props;
 
   const handleBoxClick = (event) => {
@@ -33,11 +35,11 @@ const DetailPost = (props) => {
       >
         <Box sx={style} onClick={handleBoxClick}>
           <div>
-            <img width={300} src={elem.imageUrl} alt={elem.title} />
+            <img width={300} src={onePost.imageUrl} alt={onePost.title} />
           </div>
           <div>
-            <h1>{elem.title}</h1>
-            <p>{elem.text}</p>
+            <h1>{onePost.title}</h1>
+            <p>{onePost.text}</p>
           </div>
         </Box>
       </Modal>

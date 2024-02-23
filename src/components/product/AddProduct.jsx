@@ -8,6 +8,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState({
     image: "",
     price: 0,
+    category: "",
     description: "",
   });
   useEffect(() => {

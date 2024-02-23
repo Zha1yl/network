@@ -12,7 +12,7 @@ const Home = () => {
   const [text, setText] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
-  const [tags, setTags] = useState([]);
+  const [fullVideoUrl, setFullVideoUrl] = useState("");
   const [error, setError] = useState("");
 
   const handleTitleChange = (e) => {
@@ -31,8 +31,8 @@ const Home = () => {
     setVideoUrl(e.target.value);
   };
 
-  const handleTagsChange = (e) => {
-    setTags(e.target.value);
+  const handleFullVideoUrlChange = (e) => {
+    setFullVideoUrl(e.target.value);
   };
 
   const handleClick = () => {
@@ -40,21 +40,19 @@ const Home = () => {
       setError("Please fill in all required fields.");
       return;
     }
-    tags.split("#");
-    addPost({ title, text, imageUrl, videoUrl, tags }, user.token);
+    addPost({ title, text, imageUrl, videoUrl, fullVideoUrl }, user.token);
+    // addPost({ title, text, imageUrl }, user.token);
     setTitle("");
     setText("");
     setImageUrl("");
     setVideoUrl("");
-    setTags("");
+    setFullVideoUrl("");
     setError("");
   };
 
   return (
-    <div>
-      <img src="" alt="" />
-
-      <div className="homeContainer">
+    <div className="wrapper1">
+      <div className="homeContainer wrapper">
         <div className="homeContent">
           <div className="addPostForm">
             {error && <p style={{ color: "red" }}>{error}</p>}
@@ -83,16 +81,17 @@ const Home = () => {
               onChange={handleVideoUrlChange}
               value={videoUrl}
               type="url"
-              placeholder="Ссылка на изображение"
+              placeholder="Ссылка на трейлер"
+              style={{ marginBottom: "16px", fontSize: "16px" }}
+            />
+            <Input
+              onChange={handleFullVideoUrlChange}
+              value={fullVideoUrl}
+              type="url"
+              placeholder="Ссылка на фильм"
               style={{ marginBottom: "16px", fontSize: "16px" }}
             />
             {/* TextField для ввода тегов */}
-            <Input
-              onChange={handleTagsChange}
-              value={tags}
-              placeholder="Тэги (разделите запятыми)"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
-            />
             <Button
               onClick={handleClick}
               style={{ fontSize: "16px", borderRadius: "6px" }}

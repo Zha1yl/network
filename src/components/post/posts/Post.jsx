@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { usePost } from "../../context/PostContextProvider";
 import { Button } from "antd";
 import "./post.css";
@@ -10,25 +10,54 @@ import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
 
 const Post = ({ elem }) => {
-  const [like, setLike] = useState(elem.like);
-  const [isLiked, setIsLiked] = useState(false);
-  const handleLikeClick = () => {
-    setLike((prevLike) => prevLike + (isLiked ? -1 : 1));
-    setIsLiked(!isLiked);
-  };
+  const { getOnePost } = usePost();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { deletePost } = usePost();
 
-  const { user, getAllUsers, users } = useAuth();
+  const { getAllUsers, users } = useAuth();
+  const { user } = useAuth();
   useEffect(() => {
     getAllUsers();
   }, []);
-  console.log(users);
-  console.log(user);
-  return (
+  // console.log(users);
+  // console.log(user);
+  // console.log(elem);
+  // ! логика лайка
 
+  const likes = JSON.parse(localStorage.getItem("likes")) || {};
+
+  function likePost(postId, userId) {
+    let likes = JSON.parse(localStorage.getItem("likes")) || {};
+
+    if (likes[postId] && likes[postId][userId]) {
+      likes[postId].count--;
+      delete likes[postId][userId];
+    } else {
+      if (!likes[postId]) {
+        likes[postId] = { count: 0 };
+      }
+      likes[postId].count++;
+      likes[postId][userId] = true;
+    }
+
+    // Save updated likes to local storage
+    localStorage.setItem("likes", JSON.stringify(likes));
+
+    // Return updated like count
+    return likes[postId].count;
+  }
+
+  // Get like count for the current post
+  const likeCount = likePost(elem._id, user._id);
+
+  // Пример использования функции likePost
+  const postId = "123"; // ID поста
+  const userId = "456"; // ID пользователя
+  console.log(likePost(elem._id, user._id));
+
+  return (
     <div class="post post--clickable">
       <div class="post__wrapper">
         <div class="post__center">
@@ -59,7 +88,10 @@ const Post = ({ elem }) => {
                   class="post_and_film1"
                   src={elem.imageUrl}
                   alt=""
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen();
+                    getOnePost(elem._id);
+                  }}
                 />
                 <div className="iframes__block">
                   <div className="iframe__container">
@@ -96,7 +128,6 @@ const Post = ({ elem }) => {
                   </div>
                 </div>
               </div>
-
             ) : (
               <>
                 <img
@@ -109,17 +140,38 @@ const Post = ({ elem }) => {
             )}
           </div>
           <div className="btns_container">
-            <div
-              class="post__button post__button--like"
-              onClick={handleLikeClick}
-            >
-              <span class="post__like-icon">
-                {isLiked ? (
-                  <HeartFilled style={{ color: "red" }} />
-                ) : (
-                  <HeartOutlined />
-                )}
-              </span>
+            <div className="post--clickable">
+              <div className="post__wrapper">
+                <div className="post__center">
+                  <div
+                    className="post__button post__button--like"
+                    onClick={() => likePost(elem._id, user._id)}
+                  >
+                    <span className="post__like-icon">
+                      {/* Conditional rendering of like icon */}
+                      {likes[elem._id] && likes[elem._id][user._id] ? (
+                        <>
+                          <HeartOutlined />
+                          <p>{likeCount}</p>
+                        </>
+                      ) : (
+                        <>
+                          <HeartFilled style={{ color: "red" }} />
+                          {likeCount === 0 ? <></> : <p>{likeCount}</p>}
+                        </>
+                      )}
+                    </span>
+                    <div className="post__views-count">
+                      <img
+                        className="post__views_img"
+                        src="https://static.vecteezy.com/ti/gratis-vektor/p1/3538260-mangekyou-sharingan-of-uchiha-itachi-amaterasu-und-tsukuyomi-kostenlos-vektor.jpg"
+                        alt=""
+                      />
+                      <p>{elem.viewsCount}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {user && user._id === elem.user._id && (
@@ -130,11 +182,9 @@ const Post = ({ elem }) => {
                 Delete
               </button>
             )}
-
-            <p class="post__views-count">{elem.viewsCount}</p>
           </div>
         </div>
-        <DetailPost open={open} handleClose={handleClose} elem={elem} />
+        <DetailPost open={open} handleClose={handleClose} elem={elem._id} />
       </div>
     </div>
   );
