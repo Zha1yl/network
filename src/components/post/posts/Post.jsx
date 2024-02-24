@@ -11,14 +11,14 @@ import notAva from "../../assets/person/not_have_avatar_page.jpg";
 const Post = ({ elem }) => {
   const { getOnePost, deletePost } = usePost();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
-  const { user } = useAuth();
-  const { getAllUsers, users } = useAuth();
+  const { user, getAllUsers, users } = useAuth();
   useEffect(() => {
     getAllUsers();
   }, []);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const moreIconStyle = {
     fontSize: "20px",
@@ -37,17 +37,6 @@ const Post = ({ elem }) => {
       </Menu.Item>
     </Menu>
   );
-
-  // {
-  //   user && user._id === elem.user._id && (
-  //     <button
-  //       className="post__button post__button--delete"
-  //       onClick={() => deletePost(elem._id, user.token)}
-  //     >
-  //       Delete
-  //     </button>
-  //   );
-  // }
 
   // Логика лайка
   let likes = JSON.parse(localStorage.getItem("likes")) || {};
@@ -78,129 +67,135 @@ const Post = ({ elem }) => {
 
   return (
     <div className="post post--clickable">
-      <div className="post__wrapper">
-        <div className="post__center">
-          <div className="center__block">
-            <div style={{ display: "flex", marginBottom: "10px" }}>
-              <div className="center__block_img">
-                {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
-                  .length > 0 ? (
-                  <img
-                    src={
-                      users.filter((u) => u._id === elem.user._id)[0].avatarUrl
-                    }
-                    alt=""
-                  />
+      {user ? (
+        <>
+          <div className="post__wrapper">
+            <div className="post__center">
+              <div className="center__block">
+                <div style={{ display: "flex", marginBottom: "10px" }}>
+                  <div className="center__block_img">
+                    {users &&
+                    users.filter((u) => u._id === elem.user._id && u.avatarUrl)
+                      .length > 0 ? (
+                      <img
+                        src={
+                          users.filter((u) => u._id === elem.user._id)[0]
+                            .avatarUrl
+                        }
+                        alt=""
+                      />
+                    ) : (
+                      <img src={notAva} alt="" />
+                    )}
+                  </div>
+                  <div>
+                    <p className="post__user">{elem.user.fullName}</p>
+                    <p className="post__user">{elem.updatedAt}</p>
+                  </div>
+                  {user && user._id === elem.user._id && (
+                    <Dropdown
+                      overlay={menu}
+                      trigger={["click"]}
+                      className="dropDown"
+                    >
+                      <MoreOutlined style={moreIconStyle} />
+                    </Dropdown>
+                  )}
+                </div>
+              </div>
+              <p className="post__text">{elem.text}</p>
+              <div className="post__video-container">
+                {elem.videoUrl ? (
+                  <div className="post_and_film">
+                    <img
+                      className="post_and_film1"
+                      src={elem.imageUrl}
+                      alt=""
+                      onClick={() => {
+                        handleOpen();
+                        getOnePost(elem._id);
+                      }}
+                    />
+                    <div className="iframes__block">
+                      <div className="iframe__container">
+                        <iframe
+                          className="post__video"
+                          id="fancybox-frame"
+                          allowFullScreen={true}
+                          webkitAllowFullScreen={true}
+                          mozAllowFullScreen={true}
+                          name="fancybox-frame1707985548812"
+                          frameBorder="0"
+                          width="300px"
+                          height="197px"
+                          hSpace="0"
+                          scrolling="auto"
+                          src={elem.videoUrl}
+                        ></iframe>
+                        <div className="iframe__container">
+                          <iframe
+                            className="post__video"
+                            id="fancybox-frame"
+                            allowFullScreen={true}
+                            webkitAllowFullScreen={true}
+                            mozAllowFullScreen={true}
+                            name="fancybox-frame1707985548812"
+                            frameBorder="0"
+                            width="300px"
+                            height="197px"
+                            hSpace="0"
+                            scrolling="auto"
+                            src={elem.videoUrl}
+                          ></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <img src={notAva} alt="" />
+                  <>
+                    <img
+                      className="post__image23"
+                      src={elem.imageUrl}
+                      alt=""
+                      onClick={handleOpen}
+                    />
+                  </>
                 )}
               </div>
-              <div>
-                <p className="post__user">{elem.user.fullName}</p>
-                <p className="post__user">{elem.updatedAt}</p>
-              </div>
-              {user && user._id === elem.user._id && (
-                <Dropdown
-                  overlay={menu}
-                  trigger={["click"]}
-                  className="dropDown"
-                >
-                  <MoreOutlined style={moreIconStyle} />
-                </Dropdown>
-              )}
-            </div>
-          </div>
-          <p className="post__text">{elem.text}</p>
-          <div className="post__video-container">
-            {elem.videoUrl ? (
-              <div className="post_and_film">
-                <img
-                  className="post_and_film1"
-                  src={elem.imageUrl}
-                  alt=""
-                  onClick={() => {
-                    handleOpen();
-                    getOnePost(elem._id);
-                  }}
-                />
-                <div className="iframes__block">
-                  <div className="iframe__container">
-                    <iframe
-                      className="post__video"
-                      id="fancybox-frame"
-                      allowFullScreen={true}
-                      webkitAllowFullScreen={true}
-                      mozAllowFullScreen={true}
-                      name="fancybox-frame1707985548812"
-                      frameBorder="0"
-                      width="300px"
-                      height="197px"
-                      hSpace="0"
-                      scrolling="auto"
-                      src={elem.videoUrl}
-                    ></iframe>
-                    <div className="iframe__container">
-                      <iframe
-                        className="post__video"
-                        id="fancybox-frame"
-                        allowFullScreen={true}
-                        webkitAllowFullScreen={true}
-                        mozAllowFullScreen={true}
-                        name="fancybox-frame1707985548812"
-                        frameBorder="0"
-                        width="300px"
-                        height="197px"
-                        hSpace="0"
-                        scrolling="auto"
-                        src={elem.videoUrl}
-                      ></iframe>
+
+              <div className="btns_container">
+                <div className="post--clickable">
+                  <div className="post__wrapper">
+                    <div className="post__center">
+                      <div
+                        className="post__button post__button--like"
+                        onClick={() => likePost(elem._id, user._id)}
+                      >
+                        <span className="post__like-icon">
+                          {/* Условный рендеринг иконки лайка */}
+                          {likes[elem._id] && likes[elem._id][user._id] ? (
+                            <>
+                              <HeartOutlined />
+                              <p>{likeCount}</p>
+                            </>
+                          ) : (
+                            <>
+                              <HeartFilled style={{ color: "red" }} />
+                              {likeCount === 0 ? <></> : <p>{likeCount}</p>}
+                            </>
+                          )}
+                        </span>
+                        <p className="post__views-count">{elem.viewsCount}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            ) : (
-              <>
-                <img
-                  className="post__image23"
-                  src={elem.imageUrl}
-                  alt=""
-                  onClick={handleOpen}
-                />
-              </>
-            )}
-          </div>
-
-          <div className="btns_container">
-            <div className="post--clickable">
-              <div className="post__wrapper">
-                <div className="post__center">
-                  <div
-                    className="post__button post__button--like"
-                    onClick={() => likePost(elem._id, user._id)}
-                  >
-                    <span className="post__like-icon">
-                      {/* Условный рендеринг иконки лайка */}
-                      {likes[elem._id] && likes[elem._id][user._id] ? (
-                        <>
-                          <HeartOutlined />
-                          <p>{likeCount}</p>
-                        </>
-                      ) : (
-                        <>
-                          <HeartFilled style={{ color: "red" }} />
-                          {likeCount === 0 ? <></> : <p>{likeCount}</p>}
-                        </>
-                      )}
-                    </span>
-                    <p className="post__views-count">{elem.viewsCount}</p>
-                  </div>
-                </div>
-              </div>
             </div>
+            <DetailPost open={open} handleClose={handleClose} elem={elem._id} />
           </div>
-        </div>
-        <DetailPost open={open} handleClose={handleClose} elem={elem._id} />
-      </div>
+        </>
+      ) : null}
     </div>
   );
 };

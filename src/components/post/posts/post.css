@@ -5,7 +5,7 @@
 }
 
 .post {
-  width: 80vw;
+  width: 76.5vw;
   margin-top: 40px;
   border-radius: 10px;
   background-color: white;
@@ -23,7 +23,7 @@
   margin: 0 auto;
 }
 .post__center {
-  width: 80vw;
+  width: 73vw;
 }
 .center__block {
   /* padding-top: 40px; */
@@ -45,8 +45,8 @@
 }
 .dropDown {
   position: relative;
-  right: -74vw;
-  top: -40px;
+  right: -46.5vw;
+  top: 0;
 }
 .center__block_img img {
   width: 100%;
@@ -70,12 +70,13 @@
   width: 50vw;
 }
 .post_and_film1 {
+  width: 47.5vw;
   height: 400px;
   margin-right: 20px;
   border-radius: 10px;
 }
 .post__image23 {
-  width: 76.5vw;
+  width: 60.5vw;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -117,8 +118,8 @@
 }
 .post__views-count {
   height: 59px;
-  position: absolute;
-  right: 40px;
+  position: relative;
+  left: 69.5vw;
   display: flex;
   align-items: center;
 }

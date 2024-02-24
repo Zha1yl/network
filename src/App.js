@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", width: "90vw", margin: "0 auto" }}>
         <SideBar />
         <MainRoutes />
       </div>
