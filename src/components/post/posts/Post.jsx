@@ -32,16 +32,25 @@ const Post = ({ elem }) => {
       <Menu.Item key="1" onClick={() => console.log("Action 1")}>
         EDIT
       </Menu.Item>
-      <Menu.Item
-        key="2"
-        onClick={() => user && deletePost(elem._id, user.token)}
-      >
+      <Menu.Item key="2" onClick={() => deletePost(elem._id, user.token)}>
         DELETE
       </Menu.Item>
     </Menu>
   );
 
+  // {
+  //   user && user._id === elem.user._id && (
+  //     <button
+  //       className="post__button post__button--delete"
+  //       onClick={() => deletePost(elem._id, user.token)}
+  //     >
+  //       Delete
+  //     </button>
+  //   );
+  // }
+
   // Логика лайка
+  let likes = JSON.parse(localStorage.getItem("likes")) || {};
 
   const likePost = (postId, userId) => {
     let likes = JSON.parse(localStorage.getItem("likes")) || {};
@@ -72,7 +81,7 @@ const Post = ({ elem }) => {
       <div className="post__wrapper">
         <div className="post__center">
           <div className="center__block">
-            <div>
+            <div style={{ display: "flex", marginBottom: "10px" }}>
               <div className="center__block_img">
                 {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
                   .length > 0 ? (
@@ -90,10 +99,16 @@ const Post = ({ elem }) => {
                 <p className="post__user">{elem.user.fullName}</p>
                 <p className="post__user">{elem.updatedAt}</p>
               </div>
+              {user && user._id === elem.user._id && (
+                <Dropdown
+                  overlay={menu}
+                  trigger={["click"]}
+                  className="dropDown"
+                >
+                  <MoreOutlined style={moreIconStyle} />
+                </Dropdown>
+              )}
             </div>
-            <Dropdown overlay={menu} trigger={["click"]}>
-              <MoreOutlined style={moreIconStyle} />
-            </Dropdown>
           </div>
           <p className="post__text">{elem.text}</p>
           <div className="post__video-container">
@@ -146,7 +161,7 @@ const Post = ({ elem }) => {
             ) : (
               <>
                 <img
-                  className="post__image"
+                  className="post__image23"
                   src={elem.imageUrl}
                   alt=""
                   onClick={handleOpen}
@@ -177,19 +192,11 @@ const Post = ({ elem }) => {
                         </>
                       )}
                     </span>
+                    <p className="post__views-count">{elem.viewsCount}</p>
                   </div>
                 </div>
               </div>
             </div>
-            {user && user._id === elem.user._id && (
-              <button
-                className="post__button post__button--delete"
-                onClick={() => deletePost(elem._id, user.token)}
-              >
-                Delete
-              </button>
-            )}
-            <p className="post__views-count">{elem.viewsCount}</p>
           </div>
         </div>
         <DetailPost open={open} handleClose={handleClose} elem={elem._id} />

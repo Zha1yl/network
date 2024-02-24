@@ -7,12 +7,11 @@ import { Route, Routes } from "react-router-dom";
 import PostPage from "../pages/PostPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import Login from "../components/auth/Login";
-import Favourites from "../pages/Favourites";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
 import MusicPage from "../pages/MusicPage";
-import PayPage from "../pages/PayPage";
 import FavoritesPage from "../pages/FavoritesPage";
+import PayPage from "../pages/PayPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [

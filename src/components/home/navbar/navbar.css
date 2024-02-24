@@ -74,12 +74,15 @@ img {
 .searchIcon {
   font-size: 20px !important;
   margin-left: 10px;
+  height: 30px !important;
   background-color: rgb(240, 240, 240);
 }
 
 .searchInput {
   width: 100%;
   border: none;
+  height: 30px !important;
+  margin-top: -1px;
   background-color: rgb(240, 240, 240);
 }
 
@@ -154,6 +157,9 @@ img {
   border-radius: 50%;
   border: 1px solid rgb(234, 234, 234);
   object-fit: cover;
+  position: relative;
+  left: -5px;
+  top: -1px;
 }
 .modal__item {
   width: 150px;

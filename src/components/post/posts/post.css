@@ -40,6 +40,13 @@
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   margin-right: 20px;
+  /* display: flex; */
+  /* flex-direction: row; */
+}
+.dropDown {
+  position: relative;
+  right: -74vw;
+  top: -40px;
 }
 .center__block_img img {
   width: 100%;
@@ -67,7 +74,8 @@
   margin-right: 20px;
   border-radius: 10px;
 }
-.post__image {
+.post__image23 {
+  width: 76.5vw;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
