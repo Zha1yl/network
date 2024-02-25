@@ -11,14 +11,14 @@
   "products": [
     {
       "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
-      "price": 104,
+      "price": 105,
       "category": "обувь",
       "description": "Asics Gel 1090",
       "id": 1
     },
     {
       "image": "https://assets.ajio.com/medias/sys_master/root/20231117/n1mv/6556c08bafa4cf41f58f89d7/-473Wx593H-466807731-silver-MODEL.jpg",
-      "price": 1154356,
+      "price": 115,
       "category": "Спортивка",
       "description": "Puma",
       "id": 3
@@ -50,13 +50,6 @@
       "description": "Puma",
       "category": "Обувь",
       "id": 8
-    },
-    {
-      "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
-      "price": 110,
-      "category": "Кроссовки",
-      "description": "Puma",
-      "id": 10
     }
   ],
   "categories": [

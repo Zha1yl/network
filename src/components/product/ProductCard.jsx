@@ -38,7 +38,6 @@ const ProductCard = ({ elem }) => {
     }
   };
 
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -60,7 +59,7 @@ const ProductCard = ({ elem }) => {
         >
           {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
-        <div style={{ display: "flex", gap: "20px", ml: "191px" }}>
+        <div>
           <div class="product" onClick={handleDetailClick}>
             <img src={elem.image} alt="" />
             <p class="price">{elem.price} $</p>

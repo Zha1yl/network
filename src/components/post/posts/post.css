@@ -5,81 +5,72 @@
 }
 
 .post {
-  width: 95%;
-  margin-top: 40px;
-  border-radius: 10px;
+  width: 75vw;
+  margin-top: 4vw;
+  border-radius: 1vw;
   background-color: rgb(242, 242, 242);
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 1vw;
+  -moz-border-radius: 1vw;
+  -ms-border-radius: 1vw;
+  -o-border-radius: 1vw;
 }
 .post:first-child {
   margin-top: 0;
 }
 .post__wrapper {
-  width: 90%;
+  width: 70vw;
   margin: 0 auto;
 }
-.post__center {
-}
 .center__block {
-  padding-top: 40px;
+  padding-top: 3vw;
   display: flex;
   justify-content: space-between;
 }
 .center__block_img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  margin-right: 20px;
+  width: 3vw;
+  height: 5vw;
+  border-radius: 50vw;
+  -webkit-border-radius: 50vw;
+  -moz-border-radius: 50vw;
+  -ms-border-radius: 50vw;
+  -o-border-radius: 50vw;
+  margin-right: 2vw;
 }
 .center__block_img img {
   border: 1px solid rgb(195, 193, 193);
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  border-radius: 50vw;
+  -webkit-border-radius: 50vw;
+  -moz-border-radius: 50vw;
+  -ms-border-radius: 50vw;
+  -o-border-radius: 50vw;
 }
 .post__user {
-  line-height: 30px;
+  line-height: 3vw;
 }
 .post__text {
-  padding-bottom: 20px;
+  padding-bottom: 2vw;
 }
 .post_and_film {
   display: flex;
-  border-radius: 10px;
+  border-radius: 1vw;
 }
 .post_and_film1 {
-  width: 700px;
-  height: 400px;
-  margin-right: 20px;
-  border-radius: 10px;
-}
-.post__image {
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  width: 100vw;
+  height: 28vw;
+  margin-right: 2vw;
+  border-radius: 1vw;
 }
 .iframes__block {
   display: flex;
   flex-direction: column;
 }
 
-.post__video {
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+.post__video, .post__image {
+  border-radius: 1vw;
+  -webkit-border-radius: 1vw;
+  -moz-border-radius: 1vw;
+  -ms-border-radius: 1vw;
+  -o-border-radius: 1vw;
 }
 
 .css-me73ms {

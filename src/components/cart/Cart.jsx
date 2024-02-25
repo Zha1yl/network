@@ -37,19 +37,18 @@ const Cart = () => {
                   <button onClick={() => deleteProductFromCart(elem.item.id)}>
                     Удалить
                   </button>
-                  <button>В закладки</button>
                 </div>
               </div>
             </div>
             <div className="cart_right_side">
               <p style={{ fontWeight: "700" }}>Общая цена: {elem.subPrice}$</p>
+              {/* Передаем общую сумму в компонент PayPage через параметр totalAmount */}
+              <Link to={{ pathname: "/pay", state: { totalAmount } }}>
+                <button>Оплатить заказ</button>
+              </Link>
             </div>
           </div>
         ))}
-        {/* Передаем общую сумму в компонент PayPage через параметр totalAmount */}
-        <Link to={{ pathname: "/pay", state: { totalAmount } }}>
-          <button>Оплатить заказ</button>
-        </Link>
       </div>
     </div>
   );

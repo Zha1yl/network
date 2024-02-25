@@ -24,7 +24,7 @@ const Post = ({ elem }) => {
 
 
   const moreIconStyle = {
-    fontSize: "20px",
+    fontSize: "2vw",
     color: "black",
     cursor: "pointer",
   };
@@ -127,8 +127,8 @@ const Post = ({ elem }) => {
                       mozallowfullscreen="true"
                       name="fancybox-frame1707985548812"
                       frameborder="0"
-                      width="300px"
-                      height="197px"
+                      width="300vw"
+                      height="197vw"
                       hspace="0"
                       scrolling="auto"
                       src={elem.videoUrl}
@@ -142,8 +142,8 @@ const Post = ({ elem }) => {
                         mozallowfullscreen="true"
                         name="fancybox-frame1707985548812"
                         frameborder="0"
-                        width="300px"
-                        height="197px"
+                        width="300vw"
+                        height="197vw"
                         hspace="0"
                         scrolling="auto"
                         src={elem.videoUrl}

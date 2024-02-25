@@ -33,8 +33,8 @@ const Favorites = () => {
         {favorites.map((elem) => (
           <div
             style={{
-              marginBottom: "30px",
-              borderRadius: "10px",
+              marginBottom: "2vw",
+              borderRadius: "1vw",
               width: "40vw",
               height: "13vw",
               backgroundColor: "white",

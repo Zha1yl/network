@@ -30,7 +30,7 @@ const Filter = () => {
   const { getProductsCountInFavorites, addToFavorites } = useFavorites();
 
   useEffect(() => {
-    setFavoriteCount(getProductsCountInFavorites);
+    setFavoriteCount(getProductsCountInFavorites());
   }, [addToFavorites]);
 
   useEffect(() => {
@@ -64,12 +64,18 @@ const Filter = () => {
     fetchByParams("category", category);
     handleMenuClose();
   };
-
-  console.log(categories);
   return (
     <Paper
-      sx={{ padding: 2, width: "250px", display: "flex", alignItems: "center" }}
-      style={{ marginLeft: "38%", width: "293%" }}
+      sx={{
+        padding: 2,
+        display: "flex",
+        alignItems: "center",
+        marginLeft: "8vw",
+        width: "62vw",
+        "@media (max-width: 769px)": {
+          width: "50vw"
+        },
+      }}
     >
       <FormControl>
         <RadioGroup onChange={handleFilterChange}>
@@ -100,8 +106,8 @@ const Filter = () => {
           variant="standard"
           label="Поиск..."
           sx={{
-            marginLeft: "20px",
-            marginTop: "-15px",
+            marginLeft: "2vw",
+            marginTop: "-1vw",
             flex: 1,
             "& .MuiInput-underline:before": { borderBottom: "none" },
           }}
@@ -110,7 +116,7 @@ const Filter = () => {
       <Tooltip title="Перейти в избранные">
         <Link
           to="/favorites"
-          style={{ marginLeft: "20px", textDecoration: "none" }}
+          style={{ marginLeft: "2vw", textDecoration: "none" }}
         >
           <Badge badgeContent={favoriteCount} color="success">
             <FavoriteIcon />
@@ -120,13 +126,13 @@ const Filter = () => {
       <Tooltip title="Добавить товар">
         <Link
           to="/products"
-          style={{ marginLeft: "20px", textDecoration: "none" }}
+          style={{ marginLeft: "2vw", textDecoration: "none" }}
         >
           <AddIcon />
         </Link>
       </Tooltip>
       <Tooltip title="Перейти в корзину">
-        <Link to="/cart" style={{ marginLeft: "20px", textDecoration: "none" }}>
+        <Link to="/cart" style={{ marginLeft: "2vw", textDecoration: "none" }}>
           <Badge badgeContent={badgeCount} color="success">
             <ShoppingCartIcon />
           </Badge>

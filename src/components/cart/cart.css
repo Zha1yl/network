@@ -1,47 +1,45 @@
 .cart {
-  margin: 5% 0% 0% 25%;
-  width: 100%;
-  border-radius: 10px;
+  margin: 5vw 0vw 0vw 17vw;
+  width: 51vw;
 }
 .cart_container {
   display: flex;
   justify-content: space-around;
   border: 2px solid rgb(223, 214, 214);
-  margin-bottom: 20px;
-  border-radius: 10px;
-  padding: 15px;
-  gap: 40px;
+  margin-bottom: 2vw;
+  border-radius: 1vw;
+  padding: 1vw;
   background-color: white;
 }
 .cart_left_p {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2vw;
 }
 .cart_left_side {
   display: flex;
-  gap: 50px;
+  gap: 5vw;
   border-right: 1px solid #ccc;
-  padding: 10px;
+  padding: 1vw;
 }
 .cart_left_img img {
-  width: 140px;
-  height: 110px;
+  width: 11vw;
+  height: 11vw;
 }
 .cart_right_side {
   display: flex;
   flex-direction: column;
-  gap: 67px;
+  gap: 6vw;
 }
 
 .cart button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 0.5vw;
+  border-radius: 0.5vw;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1vw;
   transition: background-color 0.3s ease;
 }
 
@@ -49,12 +47,12 @@
   background-color: #0056b3;
 }
 .cart_btn_inp input {
-  border-radius: 5px;
-  height: 27px;
+  border-radius: 0.5vw;
+  height: 2vw;
   border: none;
 }
 .cart_btn_inp {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 1vw;
+  margin-bottom: 1vw;
 }

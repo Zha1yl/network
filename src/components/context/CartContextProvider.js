@@ -10,8 +10,8 @@ import {
 const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 const INIT_STATE = {
-  cart: JSON.parse(localStorage.getItem("cart")),
-  cartLength: getProductsCountInCart() || [],
+  cart: JSON.parse(localStorage.getItem("cart")) || {},
+  cartLength: getProductsCountInCart() || 0,
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -59,6 +59,9 @@ const CartContextProvider = ({ children }) => {
       count: 1,
       subPrice: product.price,
     };
+    if (!cart.products) {
+      cart.products = [];
+    }
     let productsToFind = cart.products.filter(
       (elem) => elem.item.id === product.id
     );
@@ -79,7 +82,7 @@ const CartContextProvider = ({ children }) => {
   // ! проверка товара в корзине
   const checkProductInCart = (id) => {
     let cart = getLocalStorage("cart");
-    if (cart) {
+    if (cart && cart.products) {
       let newCart = cart.products.filter((elem) => elem.item.id === id);
       return newCart.length > 0 ? true : false;
     }
