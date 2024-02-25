@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import { useCart } from "../context/CartContextProvider";
 import "./product.css";
@@ -17,8 +17,12 @@ const ProductCard = ({ elem }) => {
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart, deleteProductFromCart } =
     useCart();
-  const { addToFavorites } = useFavorites();
+  const { addToFavorites, checkProductInFavorites, removeFromFavorites } =
+    useFavorites();
   const [like, setLike] = useState(false);
+  useEffect(() => {
+    setLike(checkProductInFavorites(elem.id));
+  }, [elem.id, checkProductInFavorites]);
 
   const handleClick = () => {
     deleteProductFromCart(elem.id);
@@ -27,7 +31,11 @@ const ProductCard = ({ elem }) => {
 
   const handleLikeClick = () => {
     setLike(!like);
-    addToFavorites(elem);
+    if (!like) {
+      addToFavorites(elem);
+    } else {
+      removeFromFavorites(elem.id);
+    }
   };
 
 

@@ -42,11 +42,16 @@
   display: flex;
   justify-content: space-around;
   border: 2px solid rgb(223, 214, 214);
-  margin-bottom: 20px;
-  border-radius: 10px;
   padding: 15px;
-  gap: 40px;
+  width: 38vw;
+  height: 10vw;
+  margin: 1vw 0vw 0vw 1vw;
 }
 .favorite-container img {
-  width: 100px;
+  width: 130px;
+  border-right: 1px solid #ede7db;
+  padding-right: 1vw;
+}
+.favorite-content-right p {
+  height: 2vw;
 }

@@ -22,7 +22,7 @@ const Cart = () => {
                 <img src={elem.item.image} alt="Picture" />
               </div>
               <div className="cart_left_p">
-                <p>{elem.item.price}$</p>
+                <p style={{ fontWeight: "700" }}>{elem.item.price}$</p>
                 <p>{elem.item.description}</p>
                 <div className="cart_btn_inp">
                   <input
@@ -42,7 +42,7 @@ const Cart = () => {
               </div>
             </div>
             <div className="cart_right_side">
-              <p>Общая цена: {elem.subPrice}$</p>
+              <p style={{ fontWeight: "700" }}>Общая цена: {elem.subPrice}$</p>
             </div>
           </div>
         ))}
