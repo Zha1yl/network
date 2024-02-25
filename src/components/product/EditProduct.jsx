@@ -42,9 +42,9 @@ const EditProduct = () => {
   return (
     <Box
       sx={{
+        margin: "1vw 0vw 0vw 17vw",
         width: "50vw",
         height: 500,
-        margin: "20px auto",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

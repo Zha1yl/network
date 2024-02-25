@@ -4,11 +4,11 @@
   box-sizing: border-box;
 }
 img {
-  width: 100%;
+  width: 100vw;
 }
 .navbarContainer {
   height: 50px;
-  width: 100%;
+  width: 100vw;
   background-color: #1877f2;
   display: flex;
   align-items: center;
@@ -22,8 +22,8 @@ img {
 }
 
 .logo {
-  font-size: 24px;
-  margin-left: 20px;
+  font-size: 2vw;
+  margin-left: 2vw;
   font-weight: bold;
   color: white;
   cursor: pointer;
@@ -32,30 +32,6 @@ img {
 .navbarCenter {
   flex: 5;
 }
-
-.searchBar {
-  width: 100%;
-  height: 30px;
-  background-color: white;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.searchIcon {
-  font-size: 20px !important;
-  margin-left: 10px;
-}
-
-.searchInput {
-  border: none;
-  width: 70%;
-}
-
-.searchInput:focus {
-  outline: none;
-}
-
 .navbarRight {
   flex: 4;
   display: flex;
@@ -63,83 +39,42 @@ img {
   justify-content: space-around;
   color: white;
 }
-
-.navbarLink {
-  margin-right: 10px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.navbarIcons {
-  display: flex;
-}
-
-.navbarIconItem {
-  margin-right: 15px;
-  cursor: pointer;
-  position: relative;
-}
-
-.navbarIconBadge {
-  width: 15px;
-  height: 15px;
-  background-color: red;
-  border-radius: 50%;
-  color: white;
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-}
-
-.navbarImg {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-}
-
 .navbar__modal {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+  margin-left: 39vw;
+  width: 3vw;
+  height: 3vw;
+  border-radius: 50vw;
   background-color: black;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  -webkit-border-radius: 50vw;
+  -moz-border-radius: 50vw;
+  -ms-border-radius: 50vw;
+  -o-border-radius: 50vw;
 }
 .modal__pic {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+  height: 3vw;
+  border-radius: 50vw;
   object-fit: cover;
 }
 .modal__item {
-  width: 150px;
-  /* height: 50px; */
+  width: 10vw;
   opacity: 1;
   position: fixed;
-  right: 40px;
-  top: 50px;
+  right: 2vw;
+  top: 3.5vw;
 }
 .modal-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(241, 243, 243);
-  padding: 20px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  padding: 1vw;
+  border-bottom-left-radius: 1vw;
+  border-bottom-right-radius: 1vw;
 }
 .modal__link {
-  margin-bottom: 20px;
+  margin-bottom: 2vw;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 1.5vw;
   font-weight: 500;
   color: black;
 }

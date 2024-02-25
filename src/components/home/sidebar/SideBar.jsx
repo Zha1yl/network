@@ -1,13 +1,11 @@
 import {
   Bookmark,
-  HelpOutline,
   MusicNote,
   PlayCircleFilledOutlined,
   RssFeed,
   Shop2,
 } from "@mui/icons-material";
 import React from "react";
-import CloseFriend from "../closeFriend/CloseFriend";
 import "./sidebar.css";
 import { useNavigate } from "react-router-dom";
 

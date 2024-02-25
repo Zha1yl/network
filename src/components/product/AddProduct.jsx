@@ -38,12 +38,11 @@ const AddProduct = () => {
     <Box
       sx={{
         width: "50vw",
-        height: 500,
-        margin: "20px auto",
+        height: "30vw",
+        margin: "2vw 0vw 0vw 13vw",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        marginLeft: "22%",
       }}
     >
       <Typography variant="h4" align="center">

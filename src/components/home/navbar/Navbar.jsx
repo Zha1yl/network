@@ -46,9 +46,7 @@ const Navbar = () => {
           Вконтакте
         </span>
       </div>
-      <div className="navbarCenter"></div>
       <div className="navbarRight">
-        <div className="navbarIcons">{/* Иконки */}</div>
         <div className="navbar__modal" ref={modalRef}>
           {user && user.avatarUrl ? (
             <>

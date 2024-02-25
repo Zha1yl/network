@@ -8,13 +8,12 @@ const AddCategory = (props) => {
   const [category, setCategory] = useState();
   const style = {
     position: "absolute",
-    top: "30%",
-    left: "35%",
-    display: 700,
+    top: "20vw",
+    left: "35vw",
     boxShadow: 24,
     bgcolor: "background.paper",
-    p: "32px",
-    borderRadius: "10px",
+    p: "3vw",
+    borderRadius: "1vw",
   };
   const handleClick = () => {
     if (!category) {

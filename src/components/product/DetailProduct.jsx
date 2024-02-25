@@ -4,16 +4,16 @@ import React, { useState, useEffect } from "react";
 const DetailProduct = (props) => {
   const style = {
     position: "absolute",
-    top: "10%",
-    left: "5%",
-    width: 1200,
-    height: 500,
+    top: "8vw",
+    left: "5vw",
+    width: "83vw",
+    height: "40vw",
     display: "flex",
     overflow: "scroll",
     border: "2px solid black",
-    boxShadow: 24,
+    boxShadow: "20vw",
     bgcolor: "background.paper",
-    p: 4,
+    p: "4vw",
   };
 
   const { elem, open, handleClose } = props;
@@ -58,12 +58,12 @@ const DetailProduct = (props) => {
         <div>
           <img width={200} src={elem.image} alt={elem.title} />
         </div>
-        <div style={{ marginLeft: "15px" }}>
+        <div style={{ marginLeft: "2vw" }}>
           <h1>{elem.title}</h1>
           <p>{elem.description}</p>
           <p style={{ fontWeight: "bold" }}>{elem.price} $</p>
           <div
-            style={{ marginTop: "20px", display: "flex", alignItems: "center" }}
+            style={{ marginTop: "2vw", display: "flex", alignItems: "center" }}
           >
             <TextField
               value={comment}
@@ -77,7 +77,7 @@ const DetailProduct = (props) => {
               onClick={handleAddComment}
               variant="contained"
               color="secondary"
-              style={{ marginLeft: "10px" }}
+              style={{ marginLeft: "1vw" }}
             >
               Добавить комментарий
             </Button>

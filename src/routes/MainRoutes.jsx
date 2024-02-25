@@ -7,7 +7,6 @@ import { Route, Routes } from "react-router-dom";
 import PostPage from "../pages/PostPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import Login from "../components/auth/Login";
-import Favourites from "../pages/Favourites";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
 import MusicPage from "../pages/MusicPage";

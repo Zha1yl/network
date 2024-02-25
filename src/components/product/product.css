@@ -1,15 +1,15 @@
 .product-list-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 1vw;
   justify-content: space-between;
   border: 1px solid #e7e7e7;
-  border-radius: 5px;
-  padding: 10px;
-  margin-top: 20px;
+  border-radius: 1vw;
+  padding: 1vw;
+  margin-top: 2vw;
   background-color: #fff;
-  width: fit-content;
-  margin-left: 113px;
+  width: 62vw;
+  margin-left: 8vw;
 }
 
 .product-card {
@@ -17,41 +17,50 @@
 }
 
 .product img {
-  width: 200px;
-  height: 250px;
-  border-radius: 10px;
+  width: 14vw;
+  height: 18vw;
+  border-radius: 1vw;
 }
 
 .product h3 {
-  font-size: 16px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  font-size: 1vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   color: #9d9fa1;
 }
 
 .product .price {
-  font-size: 14px;
+  font-size: 1vw;
   font-weight: bolder;
 }
 .favorite {
-  margin: 5% 0% 0% 25%;
-  width: 100%;
-  border-radius: 10px;
+  margin: 3vw 0vw 0vw 11vw;
+  width: 100vw;
+  border-radius: 1vw;
 }
 .favorite-container {
   display: flex;
   justify-content: space-around;
   border: 2px solid rgb(223, 214, 214);
-  padding: 15px;
+  padding: 2vw;
   width: 38vw;
   height: 10vw;
   margin: 1vw 0vw 0vw 1vw;
 }
 .favorite-container img {
-  width: 130px;
+  width: 10vw;
   border-right: 1px solid #ede7db;
   padding-right: 1vw;
 }
 .favorite-content-right p {
   height: 2vw;
+}
+
+@media all and (max-width: 769px) {
+  .product-list-container {
+    width: 50vw;
+  }
+  .product img {
+    width: 16vw;
+  }
 }
