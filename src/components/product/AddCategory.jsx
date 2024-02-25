@@ -9,12 +9,12 @@ const AddCategory = (props) => {
   const style = {
     position: "absolute",
     top: "30%",
-    left: "30%",
+    left: "35%",
     display: 700,
     boxShadow: 24,
     bgcolor: "background.paper",
-    p: 4,
-    borderRadius: 10,
+    p: "32px",
+    borderRadius: "10px",
   };
   const handleClick = () => {
     if (!category) {

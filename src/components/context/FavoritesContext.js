@@ -47,6 +47,14 @@ const FavoritesContextProvider = ({ children }) => {
       });
     }
   };
+  // !Проверка на наличие товара в избранных
+  const checkProductInFavorites = (id) => {
+    let favorites = getLocalStorage("favorites");
+    if (favorites) {
+      let newFavorites = favorites.filter((elem) => elem.id === id);
+      return newFavorites.length > 0 ? true : false;
+    }
+  };
   //   !DELETE
   const removeFromFavorites = (productId) => {
     let favorites = getLocalStorage("favorites");
@@ -64,6 +72,7 @@ const FavoritesContextProvider = ({ children }) => {
     addToFavorites,
     removeFromFavorites,
     getProductsCountInFavorites,
+    checkProductInFavorites,
   };
   return (
     <favoritesContext.Provider value={values}>
