@@ -7,9 +7,11 @@ import { Route, Routes } from "react-router-dom";
 import PostPage from "../pages/PostPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import Login from "../components/auth/Login";
+import Favourites from "../pages/Favourites";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
 import MusicPage from "../pages/MusicPage";
+import PayPage from "../pages/PayPage";
 import FavoritesPage from "../pages/FavoritesPage";
 
 const MainRoutes = () => {
@@ -25,7 +27,8 @@ const MainRoutes = () => {
     { id: 9, link: "/market", element: <MarketPage /> },
     { id: 10, link: "/posts", element: <PostPage /> },
     { id: 11, link: "/register", element: <Registration /> },
-    { id: 12, link: "/favorites", element: <FavoritesPage /> },
+    { id: 12, link: "/pay", element: <PayPage /> },
+    { id: 13, link: "/favorites", element: <FavoritesPage /> },
   ];
   return (
     <div>
