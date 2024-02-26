@@ -8,7 +8,6 @@ import React, { useState, useEffect } from "react";
 import "./musicPlayer.css";
 
 const MusicPlayer = () => {
-  // Массив треков
   const tracks = [
     {
       name: "Track 1",
@@ -30,14 +29,12 @@ const MusicPlayer = () => {
       name: "Track 5",
       url: require("../../components/music/tracks/track5.mp3"),
     },
-    // Добавьте другие треки по аналогии
   ];
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [audio] = useState(new Audio(tracks[currentTrackIndex].url));
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Функция для управления воспроизведением
   const togglePlay = () => {
     if (isPlaying) {
       audio.pause();
@@ -47,7 +44,6 @@ const MusicPlayer = () => {
     setIsPlaying(!isPlaying);
   };
 
-  // Функция для воспроизведения следующего трека
   const playNextTrack = () => {
     if (currentTrackIndex < tracks.length - 1) {
       setCurrentTrackIndex(currentTrackIndex + 1);
@@ -56,7 +52,6 @@ const MusicPlayer = () => {
     }
   };
 
-  // Функция для воспроизведения предыдущего трека
   const playPreviousTrack = () => {
     if (currentTrackIndex > 0) {
       setCurrentTrackIndex(currentTrackIndex - 1);
@@ -66,15 +61,12 @@ const MusicPlayer = () => {
   };
 
   useEffect(() => {
-    // Установка нового трека перед воспроизведением
     audio.src = tracks[currentTrackIndex].url;
-    // Подписка на событие окончания воспроизведения
     audio.addEventListener("ended", playNextTrack);
-    // Удаление подписки при размонтировании компонента
     return () => {
       audio.removeEventListener("ended", playNextTrack);
     };
-  }, [currentTrackIndex]); // Зависимость от currentTrackIndex
+  }, [currentTrackIndex]);
 
   return (
     <div className="music-player">

@@ -10,8 +10,9 @@ import Login from "../components/auth/Login";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
 import MusicPage from "../pages/MusicPage";
-import PayPage from "../pages/PayPage";
 import FavoritesPage from "../pages/FavoritesPage";
+import PayPage from "../pages/PayPage";
+import VideoPage from "../pages/VideoPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -28,6 +29,7 @@ const MainRoutes = () => {
     { id: 11, link: "/register", element: <Registration /> },
     { id: 12, link: "/pay", element: <PayPage /> },
     { id: 13, link: "/favorites", element: <FavoritesPage /> },
+    { id: 14, link: "/video", element: <VideoPage /> },
   ];
   return (
     <div>

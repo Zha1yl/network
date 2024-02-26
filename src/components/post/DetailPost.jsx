@@ -1,7 +1,9 @@
 import { Box, Modal, Typography } from "@mui/material";
 import React from "react";
+import { usePost } from "../context/PostContextProvider";
 
 const DetailPost = (props) => {
+  const { onePost } = usePost();
   const style = {
     position: "absolute",
     top: "45vw",
@@ -17,7 +19,7 @@ const DetailPost = (props) => {
     flexDirection: "column",
     alignItems: "center",
   };
-
+  console.log(onePost);
   const { elem, open, handleClose } = props;
 
   const handleBoxClick = (event) => {
@@ -37,14 +39,15 @@ const DetailPost = (props) => {
           width="100vw"
           height="400vw"
           style={{ objectFit: "cover", borderRadius: 8 }}
-          src={elem.imageUrl}
-          alt={elem.title}
+          src={onePost.imageUrl}
+          alt={onePost.title}
         />
-        <Typography variant="h5" mt="1vw">
-          {elem.title}
+        <Typography variant="h5" mt={2}>
+          {onePost.title}
         </Typography>
-        <Typography variant="body1" mt="1vw">
-          {elem.text}
+        <Typography variant="body1" mt={2}>
+          {onePost.text}
+
         </Typography>
       </Box>
     </Modal>
