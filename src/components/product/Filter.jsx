@@ -71,7 +71,7 @@ const Filter = () => {
         display: "flex",
         alignItems: "center",
         marginLeft: "8vw",
-        width: "62vw",
+        width: "61vw",
         "@media (max-width: 769px)": {
           width: "50vw"
         },
