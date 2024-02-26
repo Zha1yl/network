@@ -13,38 +13,36 @@ const EditProduct = () => {
     description: "",
     category: "",
   });
+
   const handleInput = (e) => {
-    if (e.target.name === "price") {
-      const obj = {
-        ...product,
-        [e.target.name]: Number(e.target.value),
-      };
-      setProduct(obj);
-    } else {
-      const obj = {
-        ...product,
-        [e.target.name]: e.target.value,
-      };
-      setProduct(obj);
-    }
+    const { name, value } = e.target;
+    const updatedProduct = {
+      ...product,
+      [name]: name === "price" ? Number(value) : value,
+    };
+    setProduct(updatedProduct);
   };
+
   const handleClick = () => {
     editProduct(id, product);
   };
+
   useEffect(() => {
     getOneProduct(id);
-  }, []);
+  }, [id]); // Добавление зависимости id
+
   useEffect(() => {
-    if (product) {
+    if (oneProduct) {
       setProduct(oneProduct);
     }
   }, [oneProduct]);
+
   return (
     <Box
       sx={{
+        margin: "1vw 0vw 0vw 17vw",
         width: "50vw",
         height: 500,
-        margin: "20px auto",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

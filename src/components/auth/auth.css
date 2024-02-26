@@ -4,53 +4,53 @@
   box-sizing: border-box;
 }
 img {
-  width: 100%;
+  width: 3vw;
 }
 .auth__page {
-  width: 100%;
+  width: 30vw;
+  margin-left: 24vw;
   display: flex;
   justify-content: center;
 }
 .auth__container {
-  width: 350px;
-  height: auto;
+  width: 30vw;
+  height: 40vw;
   background-color: #fff;
-  margin-top: 100px;
-  padding: 20px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  margin-top: 1.5vw;
+  padding: 1vw;
+  border-radius: 1vw;
+  -webkit-border-radius: 1vw;
+  -moz-border-radius: 1vw;
+  -ms-border-radius: 1vw;
+  -o-border-radius: 1vw;
 }
 .auth__top {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px 0;
+  margin: 3vw 0;
 }
 .auth__logo {
-  width: 50px;
-  border-radius: 10px;
+  width: 3vw;
+  border-radius: 1vw;
 }
 .auth__block {
-  width: 100%;
-  padding: 10px;
+  width: 26vw;
+  padding: 1vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .auth__input {
-  width: 100%;
-  height: 35px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  height: 3vw;
+  border-radius: 0.5vw;
+  margin-bottom: 1.5vw;
+  -webkit-border-radius: 0.5vw;
+  -moz-border-radius: 0.5vw;
+  -ms-border-radius: 0.5vw;
+  -o-border-radius: 0.5vw;
   border: 1px solid rgb(215, 206, 206);
-  text-indent: 10px;
+  text-indent: 1vw;
   background-color: #f0eeee;
 }
 .auth__input:focus {
@@ -61,25 +61,23 @@ img {
   text-indent: 0;
 }
 .auth__btn {
-  width: 100%;
-  height: 40px;
-  border-radius: 5px;
+  width: 24vw;
+  height: 3vw;
+  border-radius: 0.5vw;
   color: #fff;
   background-color: rgb(11, 135, 193);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  -webkit-border-radius: 0.5vw;
+  -moz-border-radius: 0.5vw;
+  -ms-border-radius: 0.5vw;
+  -o-border-radius: 0.5vw;
   border: none;
 }
 .auth__btn:hover {
   background-color: rgb(6, 151, 218);
 }
 .auth__bottom {
-  padding: 10px;
-  margin-bottom: 20px;
-}
-.auth__text {
+  padding: 1vw;
+  margin-bottom: 2vw;
 }
 .auth__link {
   text-decoration: none;

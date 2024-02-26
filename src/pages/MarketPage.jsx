@@ -5,7 +5,7 @@ import Filter from "../components/product/Filter";
 
 const MarketPage = () => {
   return (
-    <div>
+    <div style={{ marginLeft: "3vw" }}>
       <div>
         <div style={{ width: "300px", flex: "none", marginTop: "50px" }}>
           <Filter />

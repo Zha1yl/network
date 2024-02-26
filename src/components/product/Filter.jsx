@@ -15,6 +15,8 @@ import { Link, useSearchParams } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useCart } from "../context/CartContextProvider";
 import AddIcon from "@mui/icons-material/Add";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useFavorites } from "../context/FavoritesContext";
 
 const Filter = () => {
   const { categories, getCategories, fetchByParams, getProducts } =
@@ -23,10 +25,18 @@ const Filter = () => {
   const [search, setSearch] = useState(searchParams.get("q") || "");
   const [anchorEl, setAnchor] = useState(null);
   const [badgeCount, setBadgeCount] = useState(0);
+  const [favoriteCount, setFavoriteCount] = useState(0);
   const { addProductToCart, getProductsCountInCart } = useCart();
+  const { getProductsCountInFavorites, addToFavorites } = useFavorites();
+
+  useEffect(() => {
+    setFavoriteCount(getProductsCountInFavorites());
+  }, [addToFavorites]);
+
   useEffect(() => {
     setBadgeCount(getProductsCountInCart());
   }, [addProductToCart]);
+
   useEffect(() => {
     setSearchParams({
       q: search,
@@ -54,12 +64,18 @@ const Filter = () => {
     fetchByParams("category", category);
     handleMenuClose();
   };
-
-  console.log(categories);
   return (
     <Paper
-      sx={{ padding: 2, width: "250px", display: "flex", alignItems: "center" }}
-      style={{ marginLeft: "38%", width: "293%" }}
+      sx={{
+        padding: 2,
+        display: "flex",
+        alignItems: "center",
+        marginLeft: "8vw",
+        width: "61vw",
+        "@media (max-width: 769px)": {
+          width: "50vw"
+        },
+      }}
     >
       <FormControl>
         <RadioGroup onChange={handleFilterChange}>
@@ -90,23 +106,33 @@ const Filter = () => {
           variant="standard"
           label="Поиск..."
           sx={{
-            marginLeft: "20px",
-            marginTop: "-15px",
+            marginLeft: "2vw",
+            marginTop: "-1vw",
             flex: 1,
             "& .MuiInput-underline:before": { borderBottom: "none" },
           }}
         />
       </Tooltip>
+      <Tooltip title="Перейти в избранные">
+        <Link
+          to="/favorites"
+          style={{ marginLeft: "2vw", textDecoration: "none" }}
+        >
+          <Badge badgeContent={favoriteCount} color="success">
+            <FavoriteIcon />
+          </Badge>
+        </Link>
+      </Tooltip>
       <Tooltip title="Добавить товар">
         <Link
           to="/products"
-          style={{ marginLeft: "20px", textDecoration: "none" }}
+          style={{ marginLeft: "2vw", textDecoration: "none" }}
         >
           <AddIcon />
         </Link>
       </Tooltip>
       <Tooltip title="Перейти в корзину">
-        <Link to="/cart" style={{ marginLeft: "20px", textDecoration: "none" }}>
+        <Link to="/cart" style={{ marginLeft: "2vw", textDecoration: "none" }}>
           <Badge badgeContent={badgeCount} color="success">
             <ShoppingCartIcon />
           </Badge>

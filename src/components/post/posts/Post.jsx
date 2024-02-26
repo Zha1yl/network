@@ -1,34 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { json, useNavigate } from "react-router-dom";
+import { Menu, Dropdown } from "antd";
+import { useNavigate } from "react-router-dom";
 import { usePost } from "../../context/PostContextProvider";
-import { Button } from "antd";
-import "./post.css";
-import { IconButton } from "@mui/material";
-import { HeartFilled, HeartOutlined } from "@ant-design/icons";
-import DetailPost from "../DetailPost";
 import { useAuth } from "../../context/AuthContextProvider";
 import notAva from "../../assets/person/not_have_avatar_page.jpg";
+import DetailPost from "../DetailPost";
+import { HeartFilled, HeartOutlined, MoreOutlined } from "@ant-design/icons";
+import "./post.css";
 
 const Post = ({ elem }) => {
-  const { getOnePost } = usePost();
+  const { getOnePost, deletePost } = usePost();
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const { deletePost } = usePost();
+  const navigate = useNavigate();
+  const { user, getAllUsers, users } = useAuth();
 
-  const { getAllUsers, users } = useAuth();
-  const { user } = useAuth();
   useEffect(() => {
     getAllUsers();
   }, []);
-  // console.log(users);
-  // console.log(user);
-  // console.log(elem);
-  // ! логика лайка
 
-  const likes = JSON.parse(localStorage.getItem("likes")) || {};
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
-  function likePost(postId, userId) {
+  const likePost = (postId, userId) => {
     let likes = JSON.parse(localStorage.getItem("likes")) || {};
 
     if (likes[postId] && likes[postId][userId]) {
@@ -42,150 +35,145 @@ const Post = ({ elem }) => {
       likes[postId][userId] = true;
     }
 
-    // Save updated likes to local storage
     localStorage.setItem("likes", JSON.stringify(likes));
 
-    // Return updated like count
     return likes[postId].count;
-  }
+  };
 
-  // Get like count for the current post
-  const likeCount = likePost(elem._id, user._id);
+  const likeCount = likePost(elem._id, user && user._id);
 
-  // Пример использования функции likePost
-  const postId = "123"; // ID поста
-  const userId = "456"; // ID пользователя
-  console.log(likePost(elem._id, user._id));
+  const menu = (
+    <Menu>
+      <Menu.Item
+        key="1"
+        onClick={() => {
+          navigate(`/edit/${elem._id}`);
+        }}
+      >
+        EDIT
+      </Menu.Item>
+      <Menu.Item
+        key="2"
+        onClick={() => deletePost(elem._id, user && user.token)}
+      >
+        DELETE
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
-    <div class="post post--clickable">
-      <div class="post__wrapper">
-        <div class="post__center">
-          <div className="center__block">
-            <div className="center__block_img">
-              {users.filter((u) => u._id === elem.user._id && u.avatarUrl)
-                .length > 0 ? (
-                <img
-                  src={
-                    users.filter((u) => u._id === elem.user._id)[0].avatarUrl
-                  }
-                  alt=""
-                />
-              ) : (
-                <img src={notAva} alt="" />
-              )}
+    <div className="post post--clickable">
+      {user && (
+        <div className="post__wrapper">
+          <div className="post__center">
+            <div className="center__block">
+              <div style={{ display: "flex", marginBottom: "10px" }}>
+                <div className="center__block_img">
+                  {users &&
+                  users.find((u) => u._id === elem.user._id && u.avatarUrl) ? (
+                    <img
+                      src={users.find((u) => u._id === elem.user._id).avatarUrl}
+                      alt=""
+                    />
+                  ) : (
+                    <img src={notAva} alt="" />
+                  )}
+                </div>
+                <div>
+                  <p className="post__user1">{elem.user.fullName}</p>
+                  <p className="post__user">{elem.updatedAt}</p>
+                </div>
+                {user._id === elem.user._id && (
+                  <Dropdown
+                    overlay={menu}
+                    trigger={["click"]}
+                    className="dropDown"
+                  >
+                    <MoreOutlined
+                      style={{
+                        fontSize: "2vw",
+                        color: "black",
+                        cursor: "pointer",
+                      }}
+                    />
+                  </Dropdown>
+                )}
+              </div>
             </div>
-            <div>
-              <p class="post__user">{elem.user.fullName}</p>
-              <p class="post__user">{elem.updatedAt}</p>
-            </div>
-          </div>
-          <p class="post__text">{elem.text}</p>
-          <div class="post__video-container">
-            {elem.videoUrl ? (
-              <div className="post_and_film">
-                <img
-                  class="post_and_film1"
-                  src={elem.imageUrl}
-                  alt=""
-                  onClick={() => {
-                    handleOpen();
-                    getOnePost(elem._id);
-                  }}
-                />
-                <div className="iframes__block">
-                  <div className="iframe__container">
-                    <iframe
-                      class="post__video"
-                      id="fancybox-frame"
-                      allowfullscreen="true"
-                      webkitallowfullscreen="true"
-                      mozallowfullscreen="true"
-                      name="fancybox-frame1707985548812"
-                      frameborder="0"
-                      width="300px"
-                      height="197px"
-                      hspace="0"
-                      scrolling="auto"
-                      src={elem.videoUrl}
-                    ></iframe>
+            <p className="post__text">{elem.text}</p>
+            <div className="post__video-container">
+              {elem.videoUrl ? (
+                <div className="post_and_film">
+                  <img
+                    className="post_and_film1"
+                    src={elem.imageUrl}
+                    alt=""
+                    onClick={() => {
+                      handleOpen();
+                      getOnePost(elem._id);
+                    }}
+                  />
+                  <div className="iframes__block">
                     <div className="iframe__container">
                       <iframe
-                        class="post__video"
+                        className="post__video"
                         id="fancybox-frame"
-                        allowfullscreen="true"
-                        webkitallowfullscreen="true"
-                        mozallowfullscreen="true"
+                        allowFullScreen={true}
+                        webkitAllowFullScreen={true}
+                        mozAllowFullScreen={true}
                         name="fancybox-frame1707985548812"
-                        frameborder="0"
+                        frameBorder="0"
                         width="300px"
                         height="197px"
-                        hspace="0"
+                        hSpace="0"
                         scrolling="auto"
                         src={elem.videoUrl}
                       ></iframe>
                     </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <>
+              ) : (
                 <img
-                  class="post__image"
+                  className="post__image23"
                   src={elem.imageUrl}
                   alt=""
                   onClick={handleOpen}
                 />
-              </>
-            )}
-          </div>
-          <div className="btns_container">
-            <div className="post--clickable">
-              <div className="post__wrapper">
+              )}
+            </div>
+            <div className="btns_container">
+              <div className="post--clickable">
                 <div className="post__center">
                   <div
                     className="post__button post__button--like"
                     onClick={() => likePost(elem._id, user._id)}
                   >
                     <span className="post__like-icon">
-                      {/* Conditional rendering of like icon */}
-                      {likes[elem._id] && likes[elem._id][user._id] ? (
+                      {localStorage.getItem("likes") &&
+                      JSON.parse(localStorage.getItem("likes"))[elem._id] &&
+                      JSON.parse(localStorage.getItem("likes"))[elem._id][
+                        user._id
+                      ] ? (
                         <>
                           <HeartOutlined />
-                          <p>{likeCount}</p>
+                          {likeCount}
                         </>
                       ) : (
                         <>
                           <HeartFilled style={{ color: "red" }} />
-                          {likeCount === 0 ? <></> : <p>{likeCount}</p>}
+                          {likeCount !== 0 && likeCount}
                         </>
                       )}
                     </span>
-                    <div className="post__views-count">
-                      <img
-                        className="post__views_img"
-                        src="https://static.vecteezy.com/ti/gratis-vektor/p1/3538260-mangekyou-sharingan-of-uchiha-itachi-amaterasu-und-tsukuyomi-kostenlos-vektor.jpg"
-                        alt=""
-                      />
-                      <p>{elem.viewsCount}</p>
-                    </div>
+                    <p className="post__views-count">{elem.viewsCount}</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            {user && user._id === elem.user._id && (
-              <button
-                className="post__button post__button--delete"
-                onClick={() => deletePost(elem._id, user.token)}
-              >
-                Delete
-              </button>
-            )}
           </div>
         </div>
-        <DetailPost open={open} handleClose={handleClose} elem={elem._id} />
-      </div>
+      )}
+      <DetailPost open={open} handleClose={handleClose} elem={elem._id} />
     </div>
   );
 };

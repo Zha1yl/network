@@ -38,15 +38,15 @@ const AddProduct = () => {
     <Box
       sx={{
         width: "50vw",
-        height: 500,
-        margin: "20px auto",
+        height: "30vw",
+        margin: "2vw 0vw 0vw 13vw",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
       }}
     >
       <Typography variant="h4" align="center">
-        Добавление товаров
+        Добавить товар
       </Typography>
       <TextField
         onChange={handleInput}

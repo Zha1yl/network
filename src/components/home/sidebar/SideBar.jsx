@@ -1,16 +1,11 @@
 import {
   Bookmark,
-  Chat,
-  Event,
-  Group,
-  HelpOutline,
+  MusicNote,
   PlayCircleFilledOutlined,
   RssFeed,
-  School,
-  WorkOutline,
+  Shop2,
 } from "@mui/icons-material";
 import React from "react";
-import CloseFriend from "../closeFriend/CloseFriend";
 import "./sidebar.css";
 import { useNavigate } from "react-router-dom";
 
@@ -27,15 +22,6 @@ const SideBar = () => {
             </span>
           </li>
           <li className="sidebarListItem">
-            <Chat className="sidebarIcon" />
-            <span
-              className="sidebarListItemText"
-              onClick={() => navigate("/message")}
-            >
-              Чат
-            </span>
-          </li>
-          <li className="sidebarListItem">
             <PlayCircleFilledOutlined className="sidebarIcon" />
             <span
               className="sidebarListItemText"
@@ -45,7 +31,7 @@ const SideBar = () => {
             </span>
           </li>
           <li className="sidebarListItem">
-            <Group className="sidebarIcon" />
+            <Shop2 className="sidebarIcon" />
             <span
               className="sidebarListItemText"
               onClick={() => navigate("/market")}
@@ -63,7 +49,7 @@ const SideBar = () => {
             </span>
           </li>
           <li className="sidebarListItem">
-            <HelpOutline className="sidebarIcon" />
+            <MusicNote className="sidebarIcon" />
             <span
               className="sidebarListItemText"
               onClick={() => navigate("/music")}
@@ -71,23 +57,8 @@ const SideBar = () => {
               Музыка
             </span>
           </li>
-          <li className="sidebarListItem">
-            <WorkOutline className="sidebarIcon" />
-            <span
-              className="sidebarListItemText"
-              onClick={() => navigate("/friends")}
-            >
-              Друзья
-            </span>
-          </li>
         </ul>
-        <button className="sidebarButton">Show More</button>
         <hr className="sidebarHr" />
-        {/* <ul className="sidebarFriendList">
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
-        </ul> */}
       </div>
     </div>
   );

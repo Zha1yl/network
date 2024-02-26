@@ -5,83 +5,87 @@
       "description": "fghjkl.",
       "image": "vghbjkl",
       "video": "",
-      "id": 1
+      "id": "1"
     }
   ],
   "products": [
     {
       "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
-      "price": 104,
+      "price": 105,
       "category": "обувь",
       "description": "Asics Gel 1090",
-      "id": 1
+      "id": "1"
     },
     {
       "image": "https://assets.ajio.com/medias/sys_master/root/20231117/n1mv/6556c08bafa4cf41f58f89d7/-473Wx593H-466807731-silver-MODEL.jpg",
-      "price": 1154356,
+      "price": 115,
       "category": "Спортивка",
       "description": "Puma",
-      "id": 3
+      "id": "3"
     },
     {
       "image": "https://www.holabirdsports.com/cdn/shop/collections/hero_mizuno-running_30d5b371-3e14-452f-bfbf-0fedfe21fa13_600x600_crop_center.jpg?v=1702066685",
       "price": 100,
       "category": "обувь",
       "description": "Mizuno",
-      "id": 4
-    },
-    {
-      "image": "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/18374202/2022/8/10/6b46da84-7c15-47bf-b634-e28d502ce5fd1660132570372-ADIDAS-Men-Black-Woven-Design-Galaxy-6-Running-Shoes-4971660-1.jpg",
-      "price": 100,
-      "category": "обувь",
-      "description": "Mizuno",
-      "id": 6
+      "id": "4"
     },
     {
       "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
       "price": 100,
-      "category": "Спортивка",
-      "description": "Adidas",
+      "category": "Обувь",
+      "description": "Mizuno",
       "id": 7
     },
     {
-      "image": "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_500,c_limit/g1ljiszo4qhthfpluzbt/nike-joyride.jpg",
-      "price": 100,
-      "description": "Puma",
-      "category": "Обувь",
-      "id": 8
-    },
-    {
       "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
-      "price": 110,
-      "category": "Кроссовки",
-      "description": "Puma",
-      "id": 10
+      "price": 100,
+      "category": "Одежда",
+      "description": "Mizuno",
+      "id": 8
     }
   ],
   "categories": [
     {
       "name": "Обувь",
-      "id": 1
+      "id": "1"
     },
     {
       "name": "Одежда",
-      "id": 2
+      "id": "2"
     },
     {
       "name": "Кроссовки",
-      "id": 3
+      "id": "3"
+    },
+    {
+      "name": "Женская одежда",
+      "id": "4"
+    },
+    {
+      "name": "Бытовая техника",
+      "id": "5"
+    },
+    {
+      "name": "Авто-техника",
+      "id": "6"
+    },
+    {
+      "name": "Все для космоса",
+      "id": "7"
     }
   ],
   "songs": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Song 1",
       "artist": "Artist 1",
       "url": "https://example.com/song1.mp3"
     }
   ],
   "movies": [
-    {}
+    {
+      "id": "a168"
+    }
   ]
 }

@@ -85,7 +85,7 @@ const Registration = () => {
         </div>
         <div className="auth__bottom">
           <p className="auth__text">
-            Already have an account?{" "}
+            У вас уже есть аккаунт?{" "}
             <Link className="auth__link" to={"/login"}>
               Log in
             </Link>

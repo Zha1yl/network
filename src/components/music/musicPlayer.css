@@ -1,34 +1,55 @@
 .music-player {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 50vh;
-  gap: 20px;
+  background-color: #1e1e1e;
+  color: white;
+  margin-top: 10vw;
+  padding: 2vw;
+  border-radius: 4vw;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background: linear-gradient(
+    45deg,
+    #1db954,
+    #4a90e2
+  ); /* Градиент от Spotify green к Dodger blue */
+  animation: changeColor 1s infinite alternate; /* Анимация изменения цвета фона */
 }
-
+@keyframes changeColor {
+  from {
+    background: linear-gradient(45deg, #1db954, #4a90e2);
+  }
+  to {
+    background: linear-gradient(45deg, #4a90e2, #1db954);
+  }
+}
 .player-title {
-  font-size: 24px;
+  font-size: 2vw;
+  margin-bottom: 2vw;
 }
 
 .track-info {
-  font-size: 18px;
+  margin-bottom: 2vw;
+}
+
+.track-name {
+  font-size: 1.5vw;
 }
 
 .controls {
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 .control-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  outline: none;
+  font-size: 2vw;
+  color: #3700ff; 
+  margin: 0 1vw;
+  transition: color 0.3s;
 }
 
-.control-button svg {
-  font-size: 32px;
+.control-button:hover {
+  color: #1ed760; 
 }
-
-/* Дополнительные стили при необходимости */

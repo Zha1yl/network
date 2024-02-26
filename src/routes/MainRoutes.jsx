@@ -7,10 +7,12 @@ import { Route, Routes } from "react-router-dom";
 import PostPage from "../pages/PostPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import Login from "../components/auth/Login";
-import Favourites from "../pages/Favourites";
 import Registration from "../components/auth/Registration";
 import Home from "../pages/home/Home";
 import MusicPage from "../pages/MusicPage";
+import FavoritesPage from "../pages/FavoritesPage";
+import PayPage from "../pages/PayPage";
+import VideoPage from "../pages/VideoPage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [
@@ -25,7 +27,9 @@ const MainRoutes = () => {
     { id: 9, link: "/market", element: <MarketPage /> },
     { id: 10, link: "/posts", element: <PostPage /> },
     { id: 11, link: "/register", element: <Registration /> },
-    { id: 12, link: "/favorites", element: <Favourites /> },
+    { id: 12, link: "/pay", element: <PayPage /> },
+    { id: 13, link: "/favorites", element: <FavoritesPage /> },
+    { id: 14, link: "/video", element: <VideoPage /> },
   ];
   return (
     <div>

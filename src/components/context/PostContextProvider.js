@@ -84,16 +84,21 @@ export const PostContextProvider = ({ children }) => {
       console.error("Error fetching one post:", error);
     }
   };
-
   // Edit
-  const editPost = async (id, editedPost) => {
+  const editPost = async (id, editedPost, token) => {
     try {
-      await axios.patch(`${API_POSTS}/${id}`, editedPost);
-      navigate("/posts");
+      await axios.patch(`${API_POSTS}/${id}`, editedPost, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      navigate("/");
     } catch (error) {
       console.error("Error editing post:", error);
     }
   };
+
+  console.log(state.onePost);
 
   const values = {
     addPost,

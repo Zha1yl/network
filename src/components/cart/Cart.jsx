@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import "./cart.css";
 import { useCart } from "../context/CartContextProvider";
 
 const Cart = () => {
-  const { getCart, cart, changeProductCount, deleteProductFromCart } =
-    useCart();
-  useEffect(() => {
-    getCart();
-  }, []);
-  console.log(cart);
+  const { cart, changeProductCount, deleteProductFromCart } = useCart();
+
+  // Вычисляем общую сумму покупок
+  const totalAmount = cart.products.reduce(
+    (total, elem) => total + elem.subPrice,
+    0
+  );
+
   return (
     <div>
       <div className="cart">
@@ -19,7 +22,7 @@ const Cart = () => {
                 <img src={elem.item.image} alt="Picture" />
               </div>
               <div className="cart_left_p">
-                <p>{elem.item.price}$</p>
+                <p style={{ fontWeight: "700" }}>{elem.item.price}$</p>
                 <p>{elem.item.description}</p>
                 <div className="cart_btn_inp">
                   <input
@@ -34,13 +37,15 @@ const Cart = () => {
                   <button onClick={() => deleteProductFromCart(elem.item.id)}>
                     Удалить
                   </button>
-                  <button>В закладки</button>
                 </div>
               </div>
             </div>
             <div className="cart_right_side">
-              <p>Общая цена: {elem.subPrice}$</p>
-              <button>Оплатить заказ</button>
+              <p style={{ fontWeight: "700" }}>Общая цена: {elem.subPrice}$</p>
+              {/* Передаем общую сумму в компонент PayPage через параметр totalAmount */}
+              <Link to={{ pathname: "/pay", state: { totalAmount } }}>
+                <button>Оплатить заказ</button>
+              </Link>
             </div>
           </div>
         ))}

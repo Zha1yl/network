@@ -10,8 +10,8 @@ import {
 const cartContext = createContext();
 export const useCart = () => useContext(cartContext);
 const INIT_STATE = {
-  cart: JSON.parse(localStorage.getItem("cart")),
-  cartLength: getProductsCountInCart() || [],
+  cart: JSON.parse(localStorage.getItem("cart")) || {},
+  cartLength: getProductsCountInCart() || 0,
 };
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
@@ -26,7 +26,7 @@ const CartContextProvider = ({ children }) => {
 
   // !GET
   const getCart = () => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     if (!cart) {
       localStorage.setItem(
         "cart",
@@ -47,7 +47,7 @@ const CartContextProvider = ({ children }) => {
   };
   // !CREATE
   const addProductToCart = (product) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     if (!cart) {
       cart = {
         products: [],
@@ -59,6 +59,9 @@ const CartContextProvider = ({ children }) => {
       count: 1,
       subPrice: product.price,
     };
+    if (!cart.products) {
+      cart.products = [];
+    }
     let productsToFind = cart.products.filter(
       (elem) => elem.item.id === product.id
     );
@@ -78,15 +81,15 @@ const CartContextProvider = ({ children }) => {
   };
   // ! проверка товара в корзине
   const checkProductInCart = (id) => {
-    let cart = getLocalStorage();
-    if (cart) {
+    let cart = getLocalStorage("cart");
+    if (cart && cart.products) {
       let newCart = cart.products.filter((elem) => elem.item.id === id);
       return newCart.length > 0 ? true : false;
     }
   };
   // !изменение стоимости за один товар
   const changeProductCount = (id, count) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     cart.products = cart.products.map((elem) => {
       if (elem.item.id === id) {
         elem.count = count;
@@ -103,7 +106,7 @@ const CartContextProvider = ({ children }) => {
   };
   // !DELETE
   const deleteProductFromCart = (id) => {
-    let cart = getLocalStorage();
+    let cart = getLocalStorage("cart");
     cart.products = cart.products.filter((elem) => elem.item.id !== id);
     cart.totalPrice = calcTotalPrice(cart.products);
     localStorage.setItem("cart", JSON.stringify(cart));

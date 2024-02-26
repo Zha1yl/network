@@ -24,14 +24,6 @@ const PostList = () => {
         {filteredPosts.map((elem) => (
           <Post key={elem._id} elem={elem} />
         ))}
-        <>
-          {posts &&
-            posts.map((elem) => (
-              <>
-                <Post key={elem._id} elem={elem} />
-              </>
-            ))}
-        </>
       </div>
     </div>
   );
