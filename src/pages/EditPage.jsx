@@ -3,6 +3,7 @@ import { Button, Input, TextField } from "@mui/material";
 import { useAuth } from "../components/context/AuthContextProvider";
 import { usePost } from "../components/context/PostContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
+import EditProduct from "../components/product/EditProduct";
 
 const EditPage = () => {
   const { user, users } = useAuth();
@@ -134,6 +135,7 @@ const EditPage = () => {
           Редактировать
         </Button>
       </div>
+      <EditProduct />
     </div>
   );
 };

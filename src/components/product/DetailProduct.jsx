@@ -22,11 +22,10 @@ const DetailProduct = (props) => {
   const [productId, setProductId] = useState(null); // Хранение id текущего фильма
 
   useEffect(() => {
-    // Получение сохраненных комментариев из локального хранилища по id фильма
     const storedComments =
       JSON.parse(localStorage.getItem(`comments_${productId}`)) || [];
     setComments(storedComments);
-  }, [productId]); // <-- Добавленный массив зависимостей
+  }, [productId]);
 
   useEffect(() => {
     if (open) {
