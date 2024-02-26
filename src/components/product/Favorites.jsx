@@ -19,20 +19,41 @@ const Favorites = () => {
   console.log(favorites);
   return (
     <div>
-      <h2>Избранные товары</h2>
+      <h2
+        style={{
+          margin: "1vw 0vw 0vw 14vw",
+          fontFamily: "serif",
+          color: "#3b3a39",
+        }}
+      >
+        Избранные товары
+      </h2>
+
       <div className="favorite">
         {favorites.map((elem) => (
-          <div key={elem.id} className="favorite-container">
-            <img src={elem.image} alt="" />
-            <div>
-              <p>{elem.price}$</p>
-              <p>{elem.description}</p>
-              <Button onClick={() => handleRemoveAndAddToCart(elem.id, elem)}>
-                Добавить в корзину
-              </Button>
-              <IconButton onClick={() => removeFromFavorites(elem.id)}>
-                <DeleteOutlineIcon />
-              </IconButton>
+          <div
+            style={{
+              marginBottom: "2vw",
+              borderRadius: "1vw",
+              width: "40vw",
+              height: "13vw",
+              backgroundColor: "white",
+              border: "1px solid white",
+              marginLeft: "3vw",
+            }}
+          >
+            <div key={elem.id} className="favorite-container">
+              <img src={elem.image} alt="" />
+              <div className="favorite-content-right">
+                <p>{elem.description}</p>
+                <p>{elem.price} $</p>
+                <Button onClick={() => handleRemoveAndAddToCart(elem.id, elem)}>
+                  Добавить в корзину
+                </Button>
+                <IconButton onClick={() => removeFromFavorites(elem.id)}>
+                  <DeleteOutlineIcon />
+                </IconButton>
+              </div>
             </div>
           </div>
         ))}

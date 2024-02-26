@@ -62,9 +62,9 @@ const Home = () => {
               type="text"
               placeholder="Название поста"
               style={{
-                marginBottom: "16px",
-                fontSize: "16px",
-                marginRight: "16px",
+                marginBottom: "1vw",
+                fontSize: "1vw",
+                marginRight: "1vw",
               }}
             />
             <Input
@@ -73,9 +73,9 @@ const Home = () => {
               type="text"
               placeholder="Описание"
               style={{
-                marginBottom: "16px",
-                fontSize: "16px",
-                marginRight: "16px",
+                marginBottom: "1vw",
+                fontSize: "1vw",
+                marginRight: "1vw",
               }}
             />
             <Input
@@ -84,9 +84,9 @@ const Home = () => {
               type="url"
               placeholder="Ссылка на изображение"
               style={{
-                marginBottom: "16px",
-                fontSize: "16px",
-                marginRight: "16px",
+                marginBottom: "1vw",
+                fontSize: "1vw",
+                marginRight: "1vw",
               }}
             />
             <Input
@@ -94,19 +94,23 @@ const Home = () => {
               value={videoUrl}
               type="url"
               placeholder="Ссылка на трейлер"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{
+                marginBottom: "1vw",
+                fontSize: "1vw",
+                marginRight: "1vw",
+              }}
             />
             <Input
               onChange={handleFullVideoUrlChange}
               value={fullVideoUrl}
               type="url"
               placeholder="Ссылка на фильм"
-              style={{ marginBottom: "16px", fontSize: "16px" }}
+              style={{ marginBottom: "1vw", fontSize: "1vw" }}
             />
             {/* TextField для ввода тегов */}
             <Button
               onClick={handleClick}
-              style={{ fontSize: "16px", borderRadius: "6px" }}
+              style={{ fontSize: "1vw", borderRadius: "1vw" }}
             >
               Добавить пост
             </Button>

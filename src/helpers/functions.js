@@ -14,8 +14,9 @@ export const calcSubPrice = (elem) => {
 
 export const getProductsCountInCart = () => {
   let cart = getLocalStorage("cart");
-  return cart ? cart.products.length : 0;
+  return cart && cart.products ? cart.products.length : 0;
 };
+
 export const getProductsCountInFavorites = () => {
   let favorites = getLocalStorage("favorites");
   return favorites ? favorites.length : 0;

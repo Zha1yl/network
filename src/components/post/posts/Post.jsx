@@ -19,7 +19,7 @@ const Post = ({ elem }) => {
   const handleClose = () => setOpen(false);
 
   const moreIconStyle = {
-    fontSize: "20px",
+    fontSize: "2vw",
     color: "black",
     cursor: "pointer",
   };
@@ -170,6 +170,7 @@ const Post = ({ elem }) => {
                 )}
               </div>
 
+
               <div className="btns_container">
                 <div className="post--clickable">
                   <div className="post__wrapper">
@@ -194,6 +195,57 @@ const Post = ({ elem }) => {
                         </span>
                         <p className="post__views-count">{elem.viewsCount}</p>
                       </div>
+
+              <div>
+                <p className="post__user">{elem.user.fullName}</p>
+                <p className="post__user">{elem.updatedAt}</p>
+              </div>
+            </div>
+            <Dropdown overlay={menu} trigger={["click"]}>
+              <MoreOutlined style={moreIconStyle} />
+            </Dropdown>
+          </div>
+          <p className="post__text">{elem.text}</p>
+          <div className="post__video-container">
+            {elem.videoUrl ? (
+              <div className="post_and_film">
+                <img
+                  className="post_and_film1"
+                  src={elem.imageUrl}
+                  alt=""
+                  onClick={handleOpen}
+                />
+                <div className="iframes__block">
+                  <div className="iframe__container">
+                    <iframe
+                      className="post__video"
+                      id="fancybox-frame"
+                      allowfullscreen="true"
+                      webkitallowfullscreen="true"
+                      mozallowfullscreen="true"
+                      name="fancybox-frame1707985548812"
+                      frameborder="0"
+                      width="300vw"
+                      height="197vw"
+                      hspace="0"
+                      scrolling="auto"
+                      src={elem.videoUrl}
+                    ></iframe>
+                    <div className="iframe__container">
+                      <iframe
+                        className="post__video"
+                        id="fancybox-frame"
+                        allowfullscreen="true"
+                        webkitallowfullscreen="true"
+                        mozallowfullscreen="true"
+                        name="fancybox-frame1707985548812"
+                        frameborder="0"
+                        width="300vw"
+                        height="197vw"
+                        hspace="0"
+                        scrolling="auto"
+                        src={elem.videoUrl}
+                      ></iframe>
                     </div>
                   </div>
                 </div>

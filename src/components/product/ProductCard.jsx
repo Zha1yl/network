@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useProducts } from "../context/ProductContextProvider";
 import { useCart } from "../context/CartContextProvider";
 import "./product.css";
@@ -17,8 +17,12 @@ const ProductCard = ({ elem }) => {
   const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart, deleteProductFromCart } =
     useCart();
-  const { addToFavorites } = useFavorites();
+  const { addToFavorites, checkProductInFavorites, removeFromFavorites } =
+    useFavorites();
   const [like, setLike] = useState(false);
+  useEffect(() => {
+    setLike(checkProductInFavorites(elem.id));
+  }, [elem.id, checkProductInFavorites]);
 
   const handleClick = () => {
     deleteProductFromCart(elem.id);
@@ -27,9 +31,12 @@ const ProductCard = ({ elem }) => {
 
   const handleLikeClick = () => {
     setLike(!like);
-    addToFavorites(elem);
+    if (!like) {
+      addToFavorites(elem);
+    } else {
+      removeFromFavorites(elem.id);
+    }
   };
-
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -52,7 +59,7 @@ const ProductCard = ({ elem }) => {
         >
           {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
         </IconButton>
-        <div style={{ display: "flex", gap: "20px", ml: "191px" }}>
+        <div>
           <div class="product" onClick={handleDetailClick}>
             <img src={elem.image} alt="" />
             <p class="price">{elem.price} $</p>

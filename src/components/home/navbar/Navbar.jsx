@@ -79,6 +79,7 @@ const Navbar = () => {
               </>
             )}
 
+
             {showModal && (
               <div className="modal__item">
                 {user ? (

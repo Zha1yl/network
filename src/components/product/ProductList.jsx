@@ -31,7 +31,7 @@ const ProductList = () => {
           <ProductCard key={elem.id} elem={elem} className="product-card" />
         ))}
       </div>
-      <div style={{ margin: "25px 0px 0px 113px" }}>
+      <div style={{ margin: "2vw 0vw 0vw 9vw" }}>
         <PaginationControl
           count={count}
           page={page}
