@@ -11,11 +11,9 @@ import notAva from "../../assets/person/not_have_avatar_page.jpg";
 const Post = ({ elem }) => {
   const { getOnePost, deletePost } = usePost();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const { user, getAllUsers, users } = useAuth();
-  useEffect(() => {
-    getAllUsers();
-  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -29,7 +27,12 @@ const Post = ({ elem }) => {
   // Меню
   const menu = (
     <Menu>
-      <Menu.Item key="1" onClick={() => console.log("Action 1")}>
+      <Menu.Item
+        key="1"
+        onClick={() => {
+          navigate(`/edit/${elem._id}`);
+        }}
+      >
         EDIT
       </Menu.Item>
       <Menu.Item key="2" onClick={() => deletePost(elem._id, user.token)}>
@@ -64,6 +67,9 @@ const Post = ({ elem }) => {
 
   // Получение количества лайков для текущего поста
   const likeCount = likePost(elem._id, user._id);
+  useEffect(() => {
+    getAllUsers();
+  }, []);
 
   return (
     <div className="post post--clickable">
@@ -89,7 +95,7 @@ const Post = ({ elem }) => {
                     )}
                   </div>
                   <div>
-                    <p className="post__user">{elem.user.fullName}</p>
+                    <p className="post__user1">{elem.user.fullName}</p>
                     <p className="post__user">{elem.updatedAt}</p>
                   </div>
                   {user && user._id === elem.user._id && (
@@ -145,6 +151,7 @@ const Post = ({ elem }) => {
                             height="197px"
                             hSpace="0"
                             scrolling="auto"
+                            sandbox="allow-same-origin"
                             src={elem.videoUrl}
                           ></iframe>
                         </div>
