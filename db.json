@@ -40,16 +40,9 @@
     {
       "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
       "price": 100,
-      "category": "Спортивка",
-      "description": "Adidas",
-      "id": 7
-    },
-    {
-      "image": "https://static.nike.com/a/images/f_auto/dpr_3.0,cs_srgb/h_500,c_limit/g1ljiszo4qhthfpluzbt/nike-joyride.jpg",
-      "price": 100,
-      "description": "Puma",
       "category": "Обувь",
-      "id": 8
+      "description": "Mizuno",
+      "id": 7
     }
   ],
   "categories": [
@@ -68,6 +61,18 @@
     {
       "name": "Женская одежда",
       "id": 4
+    },
+    {
+      "name": "Бытовая техника",
+      "id": 5
+    },
+    {
+      "name": "Авто-техника",
+      "id": 6
+    },
+    {
+      "name": "Все для космоса",
+      "id": 7
     }
   ],
   "songs": [
