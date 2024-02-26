@@ -1,37 +1,98 @@
+@import url(https://fonts.googleapis.com/css?family=Rubik:300,regular,500,600,700,800,900,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: rgb(240, 240, 240);
+}
+
 img {
   width: 100vw;
 }
-.navbarContainer {
+.logo {
+  width: 50px;
   height: 50px;
-  width: 100vw;
-  background-color: #1877f2;
+
+}
+.vk__logo {
+  width: 100%;
+  height: 100%;
+}
+.navbarContainer {
+  height: 65px;
+  width: 100%;
+  background-color: white;
+
   display: flex;
   align-items: center;
+  margin: 0 auto;
   position: sticky;
   top: 0;
   z-index: 999;
 }
-
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 90vw;
+  margin: 0 auto;
+}
 .navbarLeft {
   flex: 3;
 }
 
 .logo {
-  font-size: 2vw;
-  margin-left: 2vw;
-  font-weight: bold;
-  color: white;
+
+  margin-left: 20px;
+  color: black;
+
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .navbarCenter {
   flex: 5;
 }
+.searchBar {
+  width: 100%;
+  height: 30px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: 15vw;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.searchIcon {
+  font-size: 20px !important;
+  margin-left: 10px;
+  height: 30px !important;
+  background-color: rgb(240, 240, 240);
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  height: 30px !important;
+  margin-top: -1px;
+  background-color: rgb(240, 240, 240);
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
 .navbarRight {
   flex: 4;
   display: flex;
@@ -50,10 +111,20 @@ img {
   -ms-border-radius: 50vw;
   -o-border-radius: 50vw;
 }
+.modal__pic_c {
+  width: 40px;
+  height: 40px;
+}
 .modal__pic {
-  height: 3vw;
-  border-radius: 50vw;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgb(234, 234, 234);
+
   object-fit: cover;
+  position: relative;
+  left: -5px;
+  top: -1px;
 }
 .modal__item {
   width: 10vw;
