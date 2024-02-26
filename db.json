@@ -17,13 +17,6 @@
       "id": 1
     },
     {
-      "image": "https://assets.ajio.com/medias/sys_master/root/20231117/n1mv/6556c08bafa4cf41f58f89d7/-473Wx593H-466807731-silver-MODEL.jpg",
-      "price": 115,
-      "category": "Спортивка",
-      "description": "Puma",
-      "id": 3
-    },
-    {
       "image": "https://www.holabirdsports.com/cdn/shop/collections/hero_mizuno-running_30d5b371-3e14-452f-bfbf-0fedfe21fa13_600x600_crop_center.jpg?v=1702066685",
       "price": 100,
       "category": "обувь",
@@ -43,6 +36,13 @@
       "category": "Обувь",
       "description": "Mizuno",
       "id": 7
+    },
+    {
+      "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
+      "price": 100,
+      "category": "Одежда",
+      "description": "Mizuno",
+      "id": 8
     }
   ],
   "categories": [
