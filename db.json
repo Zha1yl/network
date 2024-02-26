@@ -35,7 +35,14 @@
       "price": 100,
       "category": "Обувь",
       "description": "Mizuno",
-      "id": "7"
+      "id": 7
+    },
+    {
+      "image": "https://images.asics.com/is/image/asics/1021A285_100_SR_RT_GLB?$sfcc-product$",
+      "price": 100,
+      "category": "Одежда",
+      "description": "Mizuno",
+      "id": 8
     }
   ],
   "categories": [
